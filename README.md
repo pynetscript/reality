@@ -56,11 +56,6 @@ pip install -r requirements.txt
 - Colorama.  
 - Getpass  
 
-```Cython
-sudo pip install colorama
-sudo pip3 install colorama
-```
-
 - Function (get_input)
     - Get input that is both Py2 and Py3 compatible
 - Function (get_credentials) 
