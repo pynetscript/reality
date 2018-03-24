@@ -129,6 +129,16 @@ Finally the script will:
 - Subtract start timestamp and end timstamp to get the time (in H:M:S format) of how long the script took to run.
 - Print SCRIPT STATISTICS
 
+```
++-----------------------------------------------------------------------------+
+|                              SCRIPT STATISTICS                              |
+|-----------------------------------------------------------------------------|
+| Script started:           24/03/2018 15:47:48                               |
+| Script ended:             24/03/2018 15:49:45                               |
+| Script duration (h:m:s):  0:01:57                                           |
++-----------------------------------------------------------------------------+
+```
+
 # Successful demo
 
 ```
