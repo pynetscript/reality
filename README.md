@@ -33,16 +33,23 @@ Script output:        Cisco IOS command output
 
 # Prerequisites
 
-1. Box with [netmiko 2.1.0](https://github.com/ktbyers/netmiko) installed.  
-2. SSH (TCP/22) reachability to devices.    
-3. Local username with privilege 15 (example: `user a.lambreca priv 15 secret cisco`).
-4. Alias command to save configuration: `alias exec wr copy run start`
+1. Box with [netmiko 2.1.0](https://github.com/ktbyers/netmiko) installed.
+2. Box with [colorama 0.3.9](https://pypi.python.org/pypi/colorama) installed.
+3. SSH (TCP/22) reachability to devices.    
+4. Local username with privilege 15 (example: `user a.lambreca priv 15 secret cisco`).
+5. Alias command to save configuration: `alias exec wr copy run start`
+
+# Installation
+
+```
+pip install -r requirements.txt
+```
 
 # tools.py
 
 - tools.py is going to be imported on our main script (cmdrunner.py). 
 - This way we have a cleaner main script.  
-- Colorama (optional).  
+- Colorama.  
 - Getpass  
 
 ```Cython
