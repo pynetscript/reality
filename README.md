@@ -14,14 +14,14 @@ Script use:           SSH into Cisco IOS devices and run config/show commands
                       - 2nd argument: /x.json
                       - 3rd argument: /x.txt
                       Note: A full command looks like:
-                      ./cmdrunner.py switch/2960/24_port.json switch/2960/24_cmd.txt
+                      ./cmdrunner.py router/7200.json router/cmd.txt
 
 Script input:         SSH Username/Password
                       Specify devices as a .json file
-                      Note: See "switch/2960/24_port.json" as an example
+                      Note: See "router/7200.json" as an example
                       Specify show/config commands as a .txt file
                       Note: Show commands need "do" in the front
-                            See "switch/2960/24_cmd.txt" as an example
+                            See "router/cmd.txt" as an example
 
 Script output:        Cisco IOS command output
                       Statistics
@@ -60,7 +60,7 @@ sudo pip3 install colorama
         - If passwords match each other the script will continue to run
         - If password don't match each other you will get an error message `>> Passwords do not match. Try again. ` but the script will continue to run. Use Ctrl + C to cancel the script and run it again.
         
-# .json
+# 2nd argument (.json)
 
 Create an csv file like this example:  
 
@@ -81,3 +81,76 @@ This is what you should get from the example above.
 ```
 
 Then i copy/pasted the output into router/7200.json which is going to be used on our main script.
+
+# 3rd argument (.txt)
+
+Create a txt file with the config/show commands that you want to run on the devices:  
+Note: Show commands need "do" in the front.
+
+```
+do sh ip int b | i up
+do sh clock
+```
+
+# 1st argument (cmdrunner.py)
+
+This is the main script that we will run.
+Legal examples:
+- `python2 <1st_argument> <2nd_argument> <3rd_argument>`
+- `python3 <1st_argument> <2nd_argument> <3rd_argument>`
+
+Let's use the following example to explain the script:
+- `python3 cmdrunner.py router/7200.json router/cmd.txt`
+
+First the script will:  
+- Create a log file named "cmdrunner.log".
+- Prompt us for a username and a password (password required twice).
+
+```
+===============================================================================
+Username: a.lambreca
+Password: 
+Retype password: 
+===============================================================================
+```
+  
+Then the script will:    
+- Timestamp the date & time the script started in D/M/Y H:M:S format.
+- SSH to the first device in the <2nd_argument> (.json)    
+- Run all the commands in the <3rd argument> (.txt) 
+- Save the running-config to startup-config.  
+- Disconnect the SSH session.  
+
+Errors:
+- If the is an authentication error we will get an error message `R2.a-corp.com >> Authentication error`
+- If the is an connectivity (TCP/22) error we will get an error message `R3.a-corp.com >> TCP/22 connectivity error`
+- Errors are logged in the cmdrunner.log
+
+Finally the script will:
+- Repeat the process for all devices in <2nd_argument> (.json) 
+- Timestamp the date & time the script ended in D/M/Y H:M:S format.
+- Divide start timestamp with end timstamp to get the time (in H:M:S format) of how long the script took to run.
+- Print SCRIPT STATISTICS
+
+
+# Successful demo
+
+```Cython
+
+```
+
+# Unsuccessful demo
+
+- R1: I have misconfigured authentication.
+- R2: I have no SSH (TCP/22) reachability.
+- R3: This router is configured correctly.
+
+```Cython
+
+```
+
+# cmdrunner.log
+
+```
+
+```
