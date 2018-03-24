@@ -4,24 +4,24 @@
 # Written by:           Aleks Lambreca
 # Creation date:        20/03/2018
 # Last modified date:   24/03/2018
-# Version:              v1.1
+# Version:              v1.2
 #
 # Script use:           SSH into Cisco IOS devices and run config/show commands
-#                       Note: Supports both IPv4 and IPv6 devices
+#                       Note: Supports both IPv4 and IPv6 addresses and FQDNs
 #                             Both Py2 and Py3 compatible
 #                       The script needs 3 arguments to work:
 #                       - 1st argument: cmdrunner.py
 #                       - 2nd argument: /x.json
 #                       - 3rd argument: /x.txt
 #                       Note: A full command looks like:
-#                       ./cmdrunner.py switch/2960/24_port.json switch/2960/24_cmd.txt
+#                       ./cmdrunner.py router/7200.json router/cmd.txt
 #
 # Script input:         SSH Username/Password
 #                       Specify devices as a .json file
-#                       Note: See "switch/2960/24_port.json" as an example
+#                       Note: See "router/7200.json" as an example
 #                       Specify show/config commands as a .txt file
 #                       Note: Show commands need "do" in the front
-#                             See "switch/2960/24_cmd.txt" as an example
+#                             See "router/cmd.txt" as an example
 #
 # Script output:        Cisco IOS command output
 #                       Statistics
