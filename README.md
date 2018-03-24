@@ -58,5 +58,26 @@ sudo pip3 install colorama
     - Prompts for username
     - Prompts for password twice
         - If passwords match each other the script will continue to run
-        - If password don't match each other you will get an error message `>> Passwords do not match. Try again. ` and you will prompted for password again
-            - The script though will continue to run, but you should use Ctrl + C to cancel the script and try again.
+        - If password don't match each other you will get an error message `>> Passwords do not match. Try again. ` but the script will continue to run. Use Ctrl + C to cancel the script and run it again.
+        
+# .json
+
+Create an csv file like this example:  
+
+```CSV
+device_type,ip
+cisco_ios,r1.a-corp.com
+cisco_ios,r2.a-corp.com
+```
+
+Copy paste everything from the csv file to [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/#).  
+From the bottom, choose **Output as JSON - Properties**.  
+From the left, choose **Delimiter Comma** and **Decimal Sign Commad**.  
+This is what you should get from the example above.  
+
+```
+[{"device_type":"cisco_ios","ip":"r1.a-corp.com"},
+{"device_type":"cisco_ios","ip":"r2.a-corp.com"}]
+```
+
+Then i copy/pasted the output into router/7200.json which is going to be used on our main script.
