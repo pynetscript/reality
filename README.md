@@ -57,6 +57,6 @@ sudo pip3 install colorama
 - Function (get_credentials) 
     - Prompts for username
     - Prompts for password twice
-          - If passwords match each other the script will continue to run
-          - If password don't match each other you will get an error message `>> Passwords do not match. Try again. ` and you will prompted for password again
+        - If passwords match each other the script will continue to run
+        - If password don't match each other you will get an error message `>> Passwords do not match. Try again. ` and you will prompted for password again
             - The script though will continue to run, but you should use Ctrl + C to cancel the script and try again.
