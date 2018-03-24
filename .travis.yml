@@ -4,7 +4,6 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
-services:
- - mongodb
+  - "3.6"
 script:
-  - cmdrunner
+  - pytest
