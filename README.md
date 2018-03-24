@@ -43,9 +43,9 @@ Script output:        Cisco IOS command output
 # Installation
 
 ```
-sudo apt-get install git
-git clone https://github.com/pynetscript/reality.git
-cd reality
+mkdir /reality/ && cd /reality/
+sudo apt-get install -y git
+git clone -b https://github.com/pynetscript/reality.git . 
 pip install -r requirements.txt
 ```
 
