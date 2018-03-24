@@ -41,6 +41,9 @@ This isn't the best python script out there :)
 
 # tools.py
 
+- tools.py is going to be imported on our main script (cmdrunner.py). 
+- This way we have a cleaner script.  
+
 - Colorama (optional).
 - Getpass
 
@@ -49,7 +52,11 @@ sudo pip install colorama
 sudo pip3 install colorama
 ```
 
-- Function (get_input) to get input that is both Py2 and Py3 compatible.
-    - Test
-- Function (get_credentials) that prompts for, and returns a username and password (password is asked twice, and if they don't match you get an error message `>> Passwords do not match. Try again. `. The script though will continue to run, but you should use Ctrl + C to cancel the script and try again.  
-- tools.py is going to be imported on our main script (telnet-cmdrunner.py). This way we have a cleaner script to work with.  
+- Function (get_input)
+    - Get input that is both Py2 and Py3 compatible.st
+- Function (get_credentials) 
+    - Prompts for username
+    - Prompts for password twice
+          - If passwords match each other the script will continue to run
+          - If password don't match each other you will get an error message `>> Passwords do not match. Try again. ` and you will prompted for password again
+            - The script though will continue to run, but you should use Ctrl + C to cancel the script and try again.
