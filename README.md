@@ -80,11 +80,11 @@ This is what you should get from the example above.
 {"device_type":"cisco_ios","ip":"r2.a-corp.com"}]
 ```
 
-Then i copy/pasted the output into router/7200.json which is going to be used on our main script.
+Then i copy/pasted the output into router/7200.json which is going to be used on our main script.   
 
 # 3rd argument (.txt)
 
-Create a txt file with the config/show commands that you want to run on the devices:  
+Create a txt file with the config/show commands that you want to run on the devices:    
 Note: Show commands need "do" in the front.
 
 ```
@@ -94,15 +94,15 @@ do sh clock
 
 # 1st argument (cmdrunner.py)
 
-This is the main script that we will run.
-Legal examples:
+This is the main script that we will run.   
+Legal examples:   
 - `python2 <1st_argument> <2nd_argument> <3rd_argument>`
 - `python3 <1st_argument> <2nd_argument> <3rd_argument>`
 
-Let's use the following example to explain the script:
+Let's use the following example to explain the script:    
 - `python3 cmdrunner.py router/7200.json router/cmd.txt`
 
-First the script will:  
+First the script will:     
 - Create a log file named "cmdrunner.log".
 - Prompt us for a username and a password (password required twice).
 
