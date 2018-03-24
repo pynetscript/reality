@@ -33,6 +33,7 @@ Script output:        Cisco IOS command output
 
 # Prerequisites
 
+0. Box with latest version of [git](https://git-scm.com/) installed.
 1. Box with [netmiko 2.1.0](https://github.com/ktbyers/netmiko) installed.
 2. Box with [colorama 0.3.9](https://pypi.python.org/pypi/colorama) installed.
 3. SSH (TCP/22) reachability to devices.    
@@ -42,6 +43,9 @@ Script output:        Cisco IOS command output
 # Installation
 
 ```
+sudo apt-get install git
+git clone https://github.com/pynetscript/reality.git
+cd reality
 pip install -r requirements.txt
 ```
 
