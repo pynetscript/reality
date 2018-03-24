@@ -7,7 +7,7 @@ Last modified date:   24/03/2018
 Version:              v1.1
 
 Script use:           SSH into Cisco IOS devices and run config/show commands
-                      Note: Supports both IPv4 and IPv6 devices
+                      Note: Supports both IPv4 and IPv6 addresses and FQDNs
                             Both Py2 and Py3 compatible
                       The script needs 3 arguments to work:
                       - 1st argument: cmdrunner.py
@@ -28,10 +28,6 @@ Script output:        Cisco IOS command output
                       Erros in cmdrunner.log
 ```
 
-# Disclaimer
-
-This isn't the best python script out there :)  
-
 # Prerequisites
 
 1. Box with [netmiko 2.1.0](https://github.com/ktbyers/netmiko) installed.  
@@ -42,7 +38,7 @@ This isn't the best python script out there :)
 # tools.py
 
 - tools.py is going to be imported on our main script (cmdrunner.py). 
-- This way we have a cleaner script.  
+- This way we have a cleaner main script.  
 - Colorama (optional).  
 - Getpass  
 
@@ -66,7 +62,8 @@ sudo pip3 install colorama
 ```CSV
 device_type,ip
 cisco_ios,r1.a-corp.com
-cisco_ios,r2.a-corp.com
+cisco_ios,192.168.1.120
+cisco_ios,2001:db8:acab:a001::130
 ```
 
 - Copy paste everything from the csv file to [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/#).  
@@ -76,7 +73,8 @@ cisco_ios,r2.a-corp.com
 
 ```
 [{"device_type":"cisco_ios","ip":"r1.a-corp.com"},
-{"device_type":"cisco_ios","ip":"r2.a-corp.com"}]
+{"device_type":"cisco_ios","ip":"192.168.1.120"},
+{"device_type":"cisco_ios","ip":"2001:db8:acab:a001::130"}]
 ```
 
 - Finally i copy/pasted the output into router/7200.json which is going to be used by cmdrunner.py as the <2nd_argument>.   
@@ -122,7 +120,7 @@ Then the script will:
 
 Errors:
 - If the is an authentication error we will get an error message `R1.a-corp.com >> Authentication error`
-- If the is an connectivity (TCP/22) error we will get an error message `R2.a-corp.com >> TCP/22 connectivity error`
+- If the is an connectivity (TCP/22) error we will get an error message `192.168.1.120 >> TCP/22 connectivity error`
 - Errors are logged in the cmdrunner.log
 
 Finally the script will:
@@ -134,14 +132,96 @@ Finally the script will:
 # Successful demo
 
 ```Cython
+aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt
+===============================================================================
+Username: a.lambreca
+Password: 
+Retype password: 
+===============================================================================
+Connecting to device: r1.a-corp.com
+-------------------------------------------------------------------------------
+>> do sh ip int b | i up
 
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#do sh ip int b | i up
+FastEthernet0/0        192.168.1.110   YES NVRAM  up                    up      
+R1(config)#end
+R1#
+-------------------------------------------------------------------------------
+>> do sh clock
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#do sh clock
+*15:48:12.867 UTC Sat Mar 24 2018
+R1(config)#end
+R1#
+-------------------------------------------------------------------------------
+Warning: Attempting to overwrite an NVRAM configuration previously written
+by a different version of the system image.
+Overwrite the previous NVRAM configuration?[confirm]
+===============================================================================
+Connecting to device: 192.168.1.120
+-------------------------------------------------------------------------------
+>> do sh ip int b | i up
+
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#do sh ip int b | i up
+FastEthernet0/0        192.168.1.120   YES NVRAM  up                    up      
+Loopback0              10.2.0.1        YES NVRAM  up                    up      
+R2(config)#end
+R2#
+-------------------------------------------------------------------------------
+>> do sh clock
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#do sh clock
+*15:48:52.451 UTC Sat Mar 24 2018
+R2(config)#end
+R2#
+-------------------------------------------------------------------------------
+Warning: Attempting to overwrite an NVRAM configuration previously written
+by a different version of the system image.
+Overwrite the previous NVRAM configuration?[confirm]
+===============================================================================
+Connecting to device: 2001:db8:acab:a001::130
+-------------------------------------------------------------------------------
+>> do sh ip int b | i up
+
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#do sh ip int b | i up
+FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up      
+R3(config)#end
+R3#
+-------------------------------------------------------------------------------
+>> do sh clock
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#do sh clock
+*15:49:29.439 UTC Sat Mar 24 2018
+R3(config)#end
+R3#
+-------------------------------------------------------------------------------
+Warning: Attempting to overwrite an NVRAM configuration previously written
+by a different version of the system image.
+Overwrite the previous NVRAM configuration?[confirm]
+===============================================================================
++-----------------------------------------------------------------------------+
+|                              SCRIPT STATISTICS                              |
+|-----------------------------------------------------------------------------|
+| Script started:           24/03/2018 15:47:48                               |
+| Script ended:             24/03/2018 15:49:45                               |
+| Script duration (h:m:s):  0:01:57                                           |
++-----------------------------------------------------------------------------+
 ```
 
 # Unsuccessful demo
 
-- R1: I have misconfigured authentication.
-- R2: I have no SSH (TCP/22) reachability.
-- R3: This router is configured correctly.
+- R1 (r1.a-corp.com): I have misconfigured authentication.
+- R2 (192.168.1.120): I have no SSH (TCP/22) reachability.
+- R3 (2001:db8:acab:a001::130): This router is configured correctly.
 
 ```Cython
 
