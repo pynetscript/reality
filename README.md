@@ -131,7 +131,7 @@ Finally the script will:
 
 # Successful demo
 
-```Cython
+```Python
 aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt
 ===============================================================================
 Username: a.lambreca
