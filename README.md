@@ -128,9 +128,8 @@ Errors:
 Finally the script will:
 - Repeat the process for all devices in <2nd_argument> (.json) 
 - Timestamp the date & time the script ended in D/M/Y H:M:S format.
-- Divide start timestamp with end timstamp to get the time (in H:M:S format) of how long the script took to run.
+- Subtract start timestamp and end timstamp to get the time (in H:M:S format) of how long the script took to run.
 - Print SCRIPT STATISTICS
-
 
 # Successful demo
 
