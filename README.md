@@ -131,7 +131,7 @@ Finally the script will:
 
 # Successful demo
 
-```Bython
+```
 aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt
 ===============================================================================
 Username: a.lambreca
@@ -223,12 +223,56 @@ Overwrite the previous NVRAM configuration?[confirm]
 - R2 (192.168.1.120): I have no SSH (TCP/22) reachability.
 - R3 (2001:db8:acab:a001::130): This router is configured correctly.
 
-```Cython
+```
+aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt
+===============================================================================
+Username: a.lambreca
+Password: 
+Retype password: 
+===============================================================================
+Connecting to device: r1.a-corp.com
+-------------------------------------------------------------------------------
+r1.a-corp.com >> Authentication error
+===============================================================================
+Connecting to device: 192.168.1.120
+-------------------------------------------------------------------------------
+192.168.1.120 >> TCP/22 connectivity error
+===============================================================================
+Connecting to device: 2001:db8:acab:a001::130
+-------------------------------------------------------------------------------
+>> do sh ip int b | i up
 
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#do sh ip int b | i up
+FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up      
+R3(config)#end
+R3#
+-------------------------------------------------------------------------------
+>> do sh clock
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#do sh clock
+*15:53:35.719 UTC Sat Mar 24 2018
+R3(config)#end
+R3#
+-------------------------------------------------------------------------------
+Building configuration...
+
+===============================================================================
++-----------------------------------------------------------------------------+
+|                              SCRIPT STATISTICS                              |
+|-----------------------------------------------------------------------------|
+| Script started:           24/03/2018 15:52:52                               |
+| Script ended:             24/03/2018 15:53:49                               |
+| Script duration (h:m:s):  0:00:56                                           |
++-----------------------------------------------------------------------------+
 ```
 
 # cmdrunner.log
 
 ```
-
+24/03/2018 15:52:56 - WARNING - Authentication failure: unable to connect cisco_ios r1.a-corp.com:22
+Authentication failed.
+24/03/2018 15:53:14 - WARNING - Connection to device timed-out: cisco_ios 192.168.1.120:22
 ```
