@@ -1,2 +1,6 @@
-[{"device_type":"cisco_ios","ip":"R8.a-corp.com"},
-{"device_type":"cisco_ios","ip":"R9.a-corp.com"}]
+[{"device_type":"cisco_ios","ip":"ACORP-EU-GR-ATH-4F-IDF4-ASW4"},
+ {"device_type":"cisco_ios","ip":"ACORP-EU-GR-ATH-5F-IDF5-ASW5"},
+ {"device_type":"cisco_ios","ip":"ACORP-EU-GR-ATH-6F-IDF6-ASW6"},
+ {"device_type":"cisco_ios","ip":"ACORP-EU-GR-ATH-7F-IDF7-ASW7"},
+ {"device_type":"cisco_ios","ip":"ACORP-EU-GR-ATH-8F-IDF8-ASW8"},
+ {"device_type":"cisco_ios","ip":"ACORP-EU-GR-ATH-9F-IDF9-ASW9"}]
