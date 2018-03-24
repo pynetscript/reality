@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/pynetscript/reality.svg?branch=master)](https://travis-ci.org/pynetscript/reality)
+![license](https://img.shields.io/github/license/pynetscript/reality.svg)
 
 # reality
 
