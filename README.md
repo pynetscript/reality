@@ -43,9 +43,8 @@ This isn't the best python script out there :)
 
 - tools.py is going to be imported on our main script (cmdrunner.py). 
 - This way we have a cleaner script.  
-
-- Colorama (optional).
-- Getpass
+- Colorama (optional).  
+- Getpass  
 
 ```Cython
 sudo pip install colorama
@@ -62,7 +61,7 @@ sudo pip3 install colorama
         
 # 2nd argument (.json)
 
-Create an csv file like this example:  
+- Create an csv file like this example:  
 
 ```CSV
 device_type,ip
@@ -70,17 +69,17 @@ cisco_ios,r1.a-corp.com
 cisco_ios,r2.a-corp.com
 ```
 
-Copy paste everything from the csv file to [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/#).  
-From the bottom, choose **Output as JSON - Properties**.  
-From the left, choose **Delimiter Comma** and **Decimal Sign Commad**.  
-This is what you should get from the example above.  
+- Copy paste everything from the csv file to [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/#).  
+- From the bottom, choose **Output as JSON - Properties**.  
+- From the left, choose **Delimiter Comma** and **Decimal Sign Commad**.  
+- This is what you should get from the example above.  
 
 ```
 [{"device_type":"cisco_ios","ip":"r1.a-corp.com"},
 {"device_type":"cisco_ios","ip":"r2.a-corp.com"}]
 ```
 
-Then i copy/pasted the output into router/7200.json which is going to be used on our main script.   
+- Finally i copy/pasted the output into router/7200.json which is going to be used by cmdrunner.py as the <2nd_argument>.   
 
 # 3rd argument (.txt)
 
