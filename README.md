@@ -122,8 +122,8 @@ Then the script will:
 - Disconnect the SSH session.  
 
 Errors:
-- If the is an authentication error we will get an error message `R2.a-corp.com >> Authentication error`
-- If the is an connectivity (TCP/22) error we will get an error message `R3.a-corp.com >> TCP/22 connectivity error`
+- If the is an authentication error we will get an error message `R1.a-corp.com >> Authentication error`
+- If the is an connectivity (TCP/22) error we will get an error message `R2.a-corp.com >> TCP/22 connectivity error`
 - Errors are logged in the cmdrunner.log
 
 Finally the script will:
