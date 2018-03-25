@@ -64,7 +64,7 @@ pip install -r requirements.txt
         
 # 2nd argument (.json)
 
-- Create an csv file like this example:  
+- Create a csv file like this example:  
 
 ```CSV
 device_type,ip
@@ -73,9 +73,9 @@ cisco_ios,192.168.1.120
 cisco_ios,2001:db8:acab:a001::130
 ```
 
-- Copy paste everything from the csv file to [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/#).  
-- From the bottom, choose **Output as JSON - Properties**.  
-- From the left, choose **Delimiter Comma** and **Decimal Sign Commad**.  
+- Copy paste everything from the csv file to [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/).  
+- On the bottom, in the **Output as** choose  **JSON - Properties**.  
+- On the left, in the **Delimiter** and in the **Decimal Sign** choose **Comma**.
 - This is what you should get from the example above.  
 
 ```
