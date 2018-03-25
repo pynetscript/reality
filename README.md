@@ -73,10 +73,11 @@ cisco_ios,192.168.1.120
 cisco_ios,2001:db8:acab:a001::130
 ```
 
-- Copy paste everything from the csv file to [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/).  
-- On the bottom, in the **Output as** choose  **JSON - Properties**.  
+- Go to [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/).
+- Copy/paste the CSV input into the **Input CSV or tab-delimited data**.
+- On the bottom, in the **Output as** choose  **JSON - Properties**.
 - On the left, in the **Delimiter** and in the **Decimal Sign** choose **Comma**.
-- This is what you should get from the example above.  
+- This is what you should get from the example above.
 
 ```
 [{"device_type":"cisco_ios","ip":"r1.a-corp.com"},
