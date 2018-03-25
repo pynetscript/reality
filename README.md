@@ -52,16 +52,13 @@ pip install -r requirements.txt
 
 # tools.py
 
-- tools.py is going to be imported on our main script (cmdrunner.py). 
-- This way we have a cleaner main script.  
-- Colorama.  
-- Getpass  
-
+- tools.py is going to be imported on our main script (cmdrunner.py).
+- This way we have a cleaner main script.
 - Function (get_input)
     - Get input that is both Py2 and Py3 compatible
 - Function (get_credentials) 
     - Prompts for username
-    - Prompts for password twice
+    - Prompts for password twice but doesn't show it on screen (getpass)
         - If passwords match each other the script will continue to run
         - If password don't match each other you will get an error message `>> Passwords do not match. Try again. ` but the script will continue to run. Use Ctrl + C to cancel the script and run it again.
         
