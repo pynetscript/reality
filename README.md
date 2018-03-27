@@ -28,7 +28,7 @@ Script input:         SSH Username/Password
                             See "router/cmd.txt" as an example
 
 Script output:        Cisco IOS command output
-                      Statistics
+                      Statisticss
                       Erros in cmdrunner.log
 ```
 
