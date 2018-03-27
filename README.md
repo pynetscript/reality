@@ -30,6 +30,7 @@ Script input:         SSH Username/Password
 Script output:        Cisco IOS command output
                       Statistics
                       Erros in cmdrunner.log
+                      Travis-CI build notification to slack channel
 ```
 
 # Prerequisites
@@ -49,6 +50,15 @@ sudo apt-get install -y git
 git clone -b https://github.com/pynetscript/reality.git . 
 pip install -r requirements.txt
 ```
+
+# .travis.yml
+
+- What language: **Python**
+- What versions: **2.7 , 3.4 , 3.5 , 3.6**
+- What to install: **pip install -r requirements.txt**
+- What to run: **python cmdrunner.py**
+- Where to send notifications: First install Travis CI on Slack and at some point it will you give a slack channel to use (my channel is **pynetscript:3GF5L6jlBvYl9TA5mrcJ87rq** - replace this with your own channel).
+
 
 # tools.py
 
