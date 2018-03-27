@@ -30,7 +30,7 @@ Script input:         SSH Username/Password
 Script output:        Cisco IOS command output
                       Statistics
                       Erros in cmdrunner.log
-                      Travis CI build notification to slack channel
+                      Travis CI build notification to slack channel (private)
 ```
 
 # Prerequisites
