@@ -58,7 +58,10 @@ pip install -r requirements.txt
 - What versions: **2.7** , **3.4** , **3.5** , **3.6**
 - What to install: **pip install -r requirements.txt**
 - What to run: **python cmdrunner.py**
-- Where to send notifications: **pynetscript:3GF5L6jlBvYl9TA5mrcJ87rq** (Install Travis CI on [Slack](https://pynetscript.slack.com) and at some point it will output a slack channel to use (my channel is private - replace this with your own channel).
+- Where to send notifications: **pynetscript:3GF5L6jlBvYl9TA5mrcJ87rq** 
+  - Install Travis CI on [Slack](https://pynetscript.slack.com) and at some point it will output a slack channel to use.
+  - Replace **pynetscript:3GF5L6jlBvYl9TA5mrcJ87rq** with your own channel.
+  - Supports private channels.
 
 
 # tools.py
