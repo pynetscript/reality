@@ -2,7 +2,7 @@
 
 ###############################################################################
 # Written by:           Aleks Lambreca
-# Creation date:        20/03/2018
+# Creation date:        24/03/2018
 # Last modified date:   05/04/2018
 # Version:              v1.1
 #
@@ -27,6 +27,7 @@
 # Script output:        Cisco IOS command output
 #                       Statistics
 #                       Erros in cmdrunner.log
+#                       Travis CI build notification to Slack private channel
 ###############################################################################
 
 
