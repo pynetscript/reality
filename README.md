@@ -137,7 +137,8 @@ Retype password:
 Then the script will:    
 - Timestamp the date & time the script started in D/M/Y H:M:S format.
 - SSH to the first device in the <2nd_argument> (.json)    
-- Run all the commands in the <3rd argument> (.txt) 
+- Run all the commands from the <3rd argument> (.txt) one by one
+  - Don't run empty line as command
 - Save the running-config to startup-config.  
 - Disconnect the SSH session.  
 
