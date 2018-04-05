@@ -7,11 +7,12 @@
 ```
 Written by:           Aleks Lambreca
 Creation date:        24/03/2018
-Last modified date:   27/03/2018
+Last modified date:   05/04/2018
 Version:              v1.1
 
 Script use:           SSH into Cisco IOS devices and run config/show commands
-                      Note: Supports both IPv4 and IPv6 addresses and FQDNs
+                      Note: Commands are run one by one (not all at once)
+                            Supports both IPv4 and IPv6 addresses and FQDNs
                             Both Py2 and Py3 compatible
                       The script needs 3 arguments to work:
                       - 1st argument: cmdrunner.py
