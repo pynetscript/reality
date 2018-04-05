@@ -7,7 +7,8 @@
 # Version:              v1.1
 #
 # Script use:           SSH into Cisco IOS devices and run config/show commands
-#                       Note: Supports both IPv4 and IPv6 addresses and FQDNs
+#                       Note: Commands are run one by one (not all at once)
+#                             Supports both IPv4 and IPv6 addresses and FQDNs
 #                             Both Py2 and Py3 compatible
 #                       The script needs 3 arguments to work:
 #                       - 1st argument: cmdrunner.py
@@ -110,15 +111,22 @@ for device in devices:
         for command in commands:
             print(Fore.RED + '>> ' + command + Style.RESET_ALL)
             print(connection.send_config_set(command))
-            print('-'*79)
+            
+            # If only whitespace in line do nothing and continue.
+            if command in ['\n', '\r\n']:
+                pass
+            else:
+                print(connection.send_config_set(command))
+                print('-'*79)
 
         # Save running-config to startup-config.
         save_conf = connection.send_command_timing('write memory')
-        print(save_conf)
         if 'Overwrite the previous NVRAM configuration?[confirm]' in save_conf:
             save_conf = connection.send_command_timing('')
         if 'Destination filename [startup-config]' in save_conf:
             save_conf = connection.send_command_timing('')
+        print(Fore.RED + '>> write memory' + "\n" + Style.RESET_ALL)
+        print(save_conf)
 
         # Disconnect SSH session.
         connection.disconnect()
