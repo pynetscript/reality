@@ -111,7 +111,6 @@ for device in devices:
         # Send each command from "x.txt" to device (3rd argument).
         for command in commands:
             print(Fore.RED + '>> ' + command + Style.RESET_ALL)
-            print(connection.send_config_set(command))
             
             # If only whitespace in line do nothing and continue.
             if command in ['\n', '\r\n']:
