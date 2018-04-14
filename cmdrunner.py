@@ -87,6 +87,7 @@ with open(sys.argv[2]) as cmd_file:
     commands = cmd_file.readlines()
 
 
+# Prompt for username and password
 username, password = tools.get_credentials()
 
 
