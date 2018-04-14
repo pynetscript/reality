@@ -98,7 +98,7 @@ start_time = start_timestamp.strftime('%d/%m/%Y %H:%M:%S')
 # Progress Bar
 widgets = ['\n',
            Percentage(), ' ', Bar(marker='#', left='[', right=']'), '\n',
-           ' ', '[',SimpleProgress(),']',' ' '[',AdaptiveETA(),']', '\n']
+           ' ', '[',SimpleProgress(),']',' ' '[', ETA(),']', '\n']
 
 pbar = ProgressBar(widgets=widgets)
 
