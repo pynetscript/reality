@@ -29,19 +29,20 @@ Script input:         SSH Username/Password
                             See "router/cmd.txt" as an example
 
 Script output:        Cisco IOS command output
+                      Errors in screen
+                      Progress bar
                       Statistics
-                      Erros in cmdrunner.log
+                      Log erros in cmdrunner.log
                       Travis CI build notification to Slack private channel
 ```
 
+
 # Prerequisites
 
-0. Box with latest version of [git](https://git-scm.com/) installed.
-1. Box with [netmiko 2.1.0](https://github.com/ktbyers/netmiko) installed (included in requirements.txt).
-2. Box with [colorama 0.3.9](https://pypi.python.org/pypi/colorama) installed (included in requirements.txt).
-3. SSH (TCP/22) reachability to devices.    
-4. Local username with privilege 15 (example: `user a.lambreca priv 15 secret cisco`).
-5. Alias command to save configuration: `alias exec wr copy run start`
+1. SSH (TCP/22) reachability to devices.    
+2. Local username with privilege 15 (example: `user a.lambreca priv 15 secret cisco`).
+3. Alias command to save configuration: `alias exec wr copy run start`
+
 
 # Installation
 
@@ -77,6 +78,7 @@ pip install -r requirements.txt
         - If passwords match each other the script will continue to run
         - If password don't match each other you will get an error message `>> Passwords do not match. Try again. ` but the script will continue to run. Use Ctrl + C to cancel the script and run it again.
         
+
 # 2nd argument (.json)
 
 - Create a csv file like this example:  
@@ -102,6 +104,7 @@ cisco_ios,2001:db8:acab:a001::130
 
 - Finally i copy/pasted the output into router/7200.json which is going to be used by cmdrunner.py as the <2nd_argument>.   
 
+
 # 3rd argument (.txt)
 
 Create a txt file with the config/show commands that you want to run on the devices:    
@@ -125,12 +128,16 @@ Let's use the following example to explain the script:
 First the script will:     
 - Create a log file named "cmdrunner.log".
 - Prompt us for a username and a password (password required twice).
+- Show progress bar
 
 ```
 ===============================================================================
 Username: a.lambreca
 Password: 
 Retype password: 
+-------------------------------------------------------------------------------                                     
+N/A% [ ]
+ [0 of 3] [ETA:  --:--:--]
 ===============================================================================
 ```
   
@@ -141,6 +148,7 @@ Then the script will:
   - Don't run empty line as command.  
 - Save the running-config to startup-config.  
 - Disconnect the SSH session.  
+- Show progress bar
 
 Errors:
 - If the is an authentication error we will get an error message `R1.a-corp.com >> Authentication error`
