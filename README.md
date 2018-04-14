@@ -39,9 +39,9 @@ Script output:        Cisco IOS command output
 
 # Prerequisites
 
-1. SSH (TCP/22) reachability to devices.    
-2. Local username with privilege 15 (example: `user a.lambreca priv 15 secret cisco`).
-3. Alias command to save configuration: `alias exec wr copy run start`
+- SSH (TCP/22) reachability to devices.    
+- Local username with privilege 15 (example: `user a.lambreca priv 15 secret cisco`).
+- Alias command to save configuration: `alias exec wr copy run start`
 
 
 # Installation
