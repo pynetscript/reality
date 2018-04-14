@@ -7,8 +7,8 @@
 ```
 Written by:           Aleks Lambreca
 Creation date:        24/03/2018
-Last modified date:   05/04/2018
-Version:              v1.1
+Last modified date:   14/04/2018
+Version:              v1.2
 
 Script use:           SSH into Cisco IOS devices and run config/show commands
                       Note: Commands are run one by one (not all at once)
