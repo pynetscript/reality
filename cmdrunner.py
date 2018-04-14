@@ -116,12 +116,11 @@ for device in pbar(devices):
 
         # Send each command from "x.txt" to device (3rd argument).
         for command in commands:
-            print(Fore.RED + '>> ' + command + Style.RESET_ALL)
-            
             # If only whitespace in line do nothing and continue.
             if command in ['\n', '\r\n']:
                 pass
             else:
+                print(Fore.RED + '>> ' + command + Style.RESET_ALL + '\n')
                 print(connection.send_config_set(command))
                 print('-'*79)
 
