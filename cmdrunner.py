@@ -25,8 +25,10 @@
 #                            See "router/cmd.txt" as an example
 #
 # Script output:        Cisco IOS command output
+#                       Errors in screen
+#                       Progress bar
 #                       Statistics
-#                       Erros in cmdrunner.log
+#                       Log erros in cmdrunner.log
 #                       Travis CI build notification to Slack private channel
 ###############################################################################
 
@@ -37,6 +39,7 @@ from __future__ import print_function
 from colorama import init
 from colorama import Fore
 from colorama import Style
+from progressbar import *
 
 # Standard library modules
 import netmiko
@@ -71,13 +74,8 @@ netmiko_ex_time = (netmiko.ssh_exception.NetMikoTimeoutException)
 netmiko_ex_auth = (netmiko.ssh_exception.NetMikoAuthenticationException)
 
 
-# If less than 3 arguments we get an error.
-# If more than 3 arguments we get an error.
-if len(sys.argv) < 3:
-    print('>> Usage: cmdrunner.py /x.json /x.txt')
-    exit()
-
-if len(sys.argv) > 3:
+# If arguments not equal to 3 we get an error.
+if len(sys.argv) != 3:
     print('>> Usage: cmdrunner.py /x.json /x.txt')
     exit()
 
@@ -96,8 +94,15 @@ username, password = tools.get_credentials()
 start_timestamp = datetime.datetime.now()
 start_time = start_timestamp.strftime('%d/%m/%Y %H:%M:%S')
 
+# Progress Bar customization
+widgets = ['\n',
+           Percentage(), ' ', Bar(marker='#', left='[', right=']'), '\n',
+           ' ', '[',SimpleProgress(),']',' ' '[',AdaptiveETA(),']', '\n']
 
-for device in devices:
+pbar = ProgressBar(widgets=widgets)
+
+
+for device in pbar(devices):
     device['username'] = username
     device['password'] = password
     try:
@@ -133,12 +138,12 @@ for device in devices:
 
 
     except netmiko_ex_auth as ex_auth:
-        print(Fore.RED + device['ip'], '>> Authentication error')
+        print(Fore.RED + device['ip'], '>> Authentication error' + Style.RESET_ALL)
         # Log the error on the working directory in cmdrunner.log
         logger.warning(ex_auth)
 
     except netmiko_ex_time as ex_time:
-        print(Fore.RED + device['ip'], '>> TCP/22 connectivity error')
+        print(Fore.RED + device['ip'], '>> TCP/22 connectivity error' + Style.RESET_ALL)
         # Log the error on the working directory in cmdrunner.log
         logger.warning(ex_time)
 
