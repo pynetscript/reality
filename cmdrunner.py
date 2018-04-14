@@ -94,7 +94,8 @@ username, password = tools.get_credentials()
 start_timestamp = datetime.datetime.now()
 start_time = start_timestamp.strftime('%d/%m/%Y %H:%M:%S')
 
-# Progress Bar customization
+
+# Progress Bar
 widgets = ['\n',
            Percentage(), ' ', Bar(marker='#', left='[', right=']'), '\n',
            ' ', '[',SimpleProgress(),']',' ' '[',AdaptiveETA(),']', '\n']
