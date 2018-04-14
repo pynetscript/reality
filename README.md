@@ -136,8 +136,7 @@ Username: a.lambreca
 Password: 
 Retype password: 
                                                                                                                    
-N/A% [                                                                               ]
- [0 of 3] [ETA:  --:--:--]
+N/A% [                                              ] [0 of 3] [ETA:  --:--:--]
 ===============================================================================
 ```
   
@@ -165,9 +164,9 @@ Finally the script will:
 +-----------------------------------------------------------------------------+
 |                              SCRIPT STATISTICS                              |
 |-----------------------------------------------------------------------------|
-| Script started:           24/03/2018 15:47:48                               |
-| Script ended:             24/03/2018 15:49:45                               |
-| Script duration (h:m:s):  0:01:57                                           |
+| Script started:           14/04/2018 21:06:33                               |
+| Script ended:             14/04/2018 21:08:20                               |
+| Script duration (h:m:s):  0:01:47                                           |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -179,10 +178,13 @@ aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt
 Username: a.lambreca
 Password: 
 Retype password: 
+                                                                                                                   
+N/A% [                                              ] [0 of 3] [ETA:  --:--:--]
 ===============================================================================
 Connecting to device: r1.a-corp.com
 -------------------------------------------------------------------------------
 >> do sh ip int b | i up
+
 
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -192,20 +194,25 @@ R1(config)#end
 R1#
 -------------------------------------------------------------------------------
 >> do sh clock
+
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
 R1(config)#do sh clock
-*15:48:12.867 UTC Sat Mar 24 2018
+*21:06:54.391 UTC Sat Apr 14 2018
 R1(config)#end
 R1#
 -------------------------------------------------------------------------------
-Warning: Attempting to overwrite an NVRAM configuration previously written
-by a different version of the system image.
-Overwrite the previous NVRAM configuration?[confirm]
+>> write memory
+
+Building configuration...
+[OK]
+                                                                                                                   
+ 33% [###############                               ] [1 of 3] [ETA:   0:01:11]
 ===============================================================================
 Connecting to device: 192.168.1.120
 -------------------------------------------------------------------------------
 >> do sh ip int b | i up
+
 
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -216,20 +223,25 @@ R2(config)#end
 R2#
 -------------------------------------------------------------------------------
 >> do sh clock
+
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
 R2(config)#do sh clock
-*15:48:52.451 UTC Sat Mar 24 2018
+*21:07:29.851 UTC Sat Apr 14 2018
 R2(config)#end
 R2#
 -------------------------------------------------------------------------------
-Warning: Attempting to overwrite an NVRAM configuration previously written
-by a different version of the system image.
-Overwrite the previous NVRAM configuration?[confirm]
+>> write memory
+
+Building configuration...
+[OK]
+                                                                                                                   
+ 66% [##############################                ] [2 of 3] [ETA:   0:00:35]
 ===============================================================================
 Connecting to device: 2001:db8:acab:a001::130
 -------------------------------------------------------------------------------
 >> do sh ip int b | i up
+
 
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -239,23 +251,28 @@ R3(config)#end
 R3#
 -------------------------------------------------------------------------------
 >> do sh clock
+
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
 R3(config)#do sh clock
-*15:49:29.439 UTC Sat Mar 24 2018
+*21:08:05.823 UTC Sat Apr 14 2018
 R3(config)#end
 R3#
 -------------------------------------------------------------------------------
-Warning: Attempting to overwrite an NVRAM configuration previously written
-by a different version of the system image.
-Overwrite the previous NVRAM configuration?[confirm]
+>> write memory
+
+Building configuration...
+[OK]
+                                                                                                                   
+100% [##############################################] [3 of 3] [Time:  0:01:46]
+
 ===============================================================================
 +-----------------------------------------------------------------------------+
 |                              SCRIPT STATISTICS                              |
 |-----------------------------------------------------------------------------|
-| Script started:           24/03/2018 15:47:48                               |
-| Script ended:             24/03/2018 15:49:45                               |
-| Script duration (h:m:s):  0:01:57                                           |
+| Script started:           14/04/2018 21:06:33                               |
+| Script ended:             14/04/2018 21:08:20                               |
+| Script duration (h:m:s):  0:01:47                                           |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -271,18 +288,25 @@ aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt
 Username: a.lambreca
 Password: 
 Retype password: 
+                                                                                                                   
+N/A% [                                              ] [0 of 3] [ETA:  --:--:--]
 ===============================================================================
 Connecting to device: r1.a-corp.com
 -------------------------------------------------------------------------------
 r1.a-corp.com >> Authentication error
+                                                                                                                   
+ 33% [###############                               ] [1 of 3] [ETA:   0:00:06]
 ===============================================================================
 Connecting to device: 192.168.1.120
 -------------------------------------------------------------------------------
 192.168.1.120 >> TCP/22 connectivity error
+                                                                                                                   
+ 66% [##############################                ] [2 of 3] [ETA:   0:00:10]
 ===============================================================================
 Connecting to device: 2001:db8:acab:a001::130
 -------------------------------------------------------------------------------
 >> do sh ip int b | i up
+
 
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -292,29 +316,35 @@ R3(config)#end
 R3#
 -------------------------------------------------------------------------------
 >> do sh clock
+
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
 R3(config)#do sh clock
-*15:53:35.719 UTC Sat Mar 24 2018
+*21:10:07.511 UTC Sat Apr 14 2018
 R3(config)#end
 R3#
 -------------------------------------------------------------------------------
+>> write memory
+
 Building configuration...
+[OK]
+                                                                                                                   
+100% [##############################################] [3 of 3] [Time:  0:00:56]
 
 ===============================================================================
 +-----------------------------------------------------------------------------+
 |                              SCRIPT STATISTICS                              |
 |-----------------------------------------------------------------------------|
-| Script started:           24/03/2018 15:52:52                               |
-| Script ended:             24/03/2018 15:53:49                               |
-| Script duration (h:m:s):  0:00:56                                           |
+| Script started:           14/04/2018 21:09:24                               |
+| Script ended:             14/04/2018 21:10:21                               |
+| Script duration (h:m:s):  0:00:57                                           |
 +-----------------------------------------------------------------------------+
 ```
 
 # cmdrunner.log
 
 ```
-24/03/2018 15:52:56 - WARNING - Authentication failure: unable to connect cisco_ios r1.a-corp.com:22
+14/04/2018 21:09:28 - WARNING - Authentication failure: unable to connect cisco_ios r1.a-corp.com:22
 Authentication failed.
-24/03/2018 15:53:14 - WARNING - Connection to device timed-out: cisco_ios 192.168.1.120:22
+14/04/2018 21:09:46 - WARNING - Connection to device timed-out: cisco_ios 192.168.1.120:22
 ```
