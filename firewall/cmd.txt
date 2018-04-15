@@ -1,2 +1,2 @@
-do sh ip int b | i up
+sh int ip b | i up
 do sh clock
