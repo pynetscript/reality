@@ -1,2 +1,2 @@
-do sh ip route | b Gate
-do sh clock
+sh ip route | b Gate
+sh clock
