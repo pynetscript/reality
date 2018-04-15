@@ -7,7 +7,7 @@
 ```
 Written by:           Aleks Lambreca
 Creation date:        24/03/2018
-Last modified date:   14/04/2018
+Last modified date:   15/04/2018
 Version:              v1.2
 
 Script use:           SSH into Cisco IOS devices and run config/show commands
@@ -135,8 +135,8 @@ First the script will:
 Username: a.lambreca
 Password: 
 Retype password: 
-                                                                                                                   
-N/A% [                                              ] [0 of 3] [ETA:  --:--:--]
+                                                                               
+N/A% [                                            ] [0 of 3] [ETA:  --:--:--]
 ===============================================================================
 ```
   
@@ -152,7 +152,7 @@ Then the script will:
 Errors:
 - If the is an authentication error we will get an error message `R1.a-corp.com >> Authentication error`
 - If the is an connectivity (TCP/22) error we will get an error message `192.168.1.120 >> TCP/22 connectivity error`
-- Errors are logged in the cmdrunner.log
+- Errors are logged in cmdrunner.log
 
 Finally the script will:
 - Repeat the process for all devices in <2nd_argument> (.json) 
@@ -164,9 +164,9 @@ Finally the script will:
 +-----------------------------------------------------------------------------+
 |                              SCRIPT STATISTICS                              |
 |-----------------------------------------------------------------------------|
-| Script started:           14/04/2018 21:06:33                               |
-| Script ended:             14/04/2018 21:08:20                               |
-| Script duration (h:m:s):  0:01:47                                           |
+| Script started:           15/04/2018 14:34:40                               |
+| Script ended:             15/04/2018 14:36:31                               |
+| Script duration (h:m:s):  0:01:51                                           |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -178,12 +178,13 @@ aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt
 Username: a.lambreca
 Password: 
 Retype password: 
-                                                                                                                   
-N/A% [                                              ] [0 of 3] [ETA:  --:--:--]
+                                                                               
+N/A% [                                            ] [0 of 3] [ETA:  --:--:--]
 ===============================================================================
-Connecting to device: r1.a-corp.com
+15/04/2018 14:34:40 - Connecting to device: r1.a-corp.com
+15/04/2018 14:34:46 - Successfully connected - r1.a-corp.com
 -------------------------------------------------------------------------------
->> do sh ip int b | i up
+[R1] [r1.a-corp.com] >> do sh ip int b | i up
 
 
 config term
@@ -193,25 +194,26 @@ FastEthernet0/0        192.168.1.110   YES NVRAM  up                    up
 R1(config)#end
 R1#
 -------------------------------------------------------------------------------
->> do sh clock
+[R1] [r1.a-corp.com] >> do sh clock
 
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
 R1(config)#do sh clock
-*21:06:54.391 UTC Sat Apr 14 2018
+*14:35:01.311 UTC Sun Apr 15 2018
 R1(config)#end
 R1#
 -------------------------------------------------------------------------------
->> write memory
+[R1] [r1.a-corp.com] >> write memory
 
 Building configuration...
 [OK]
-                                                                                                                   
- 33% [###############                               ] [1 of 3] [ETA:   0:01:11]
+                                                                               
+ 33% [##############                              ] [1 of 3] [ETA:   0:01:11]
 ===============================================================================
-Connecting to device: 192.168.1.120
+15/04/2018 14:35:16 - Connecting to device: 192.168.1.120
+15/04/2018 14:35:23 - Successfully connected - 192.168.1.120
 -------------------------------------------------------------------------------
->> do sh ip int b | i up
+[R2] [192.168.1.120] >> do sh ip int b | i up
 
 
 config term
@@ -222,25 +224,27 @@ Loopback0              10.2.0.1        YES NVRAM  up                    up
 R2(config)#end
 R2#
 -------------------------------------------------------------------------------
->> do sh clock
+[R2] [192.168.1.120] >> do sh clock
 
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
 R2(config)#do sh clock
-*21:07:29.851 UTC Sat Apr 14 2018
+*14:35:39.275 UTC Sun Apr 15 2018
 R2(config)#end
 R2#
 -------------------------------------------------------------------------------
->> write memory
+[R2] [192.168.1.120] >> write memory
+
 
 Building configuration...
 [OK]
-                                                                                                                   
- 66% [##############################                ] [2 of 3] [ETA:   0:00:35]
+                                                                               
+ 66% [#############################               ] [2 of 3] [ETA:   0:00:37]
 ===============================================================================
-Connecting to device: 2001:db8:acab:a001::130
+15/04/2018 14:35:55 - Connecting to device: 2001:db8:acab:a001::130
+15/04/2018 14:36:01 - Successfully connected - 2001:db8:acab:a001::130
 -------------------------------------------------------------------------------
->> do sh ip int b | i up
+[R3] [2001:db8:acab:a001::130] >> do sh ip int b | i up
 
 
 config term
@@ -250,29 +254,29 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 R3(config)#end
 R3#
 -------------------------------------------------------------------------------
->> do sh clock
+[R3] [2001:db8:acab:a001::130] >> do sh clock
 
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
 R3(config)#do sh clock
-*21:08:05.823 UTC Sat Apr 14 2018
+*14:36:16.767 UTC Sun Apr 15 2018
 R3(config)#end
 R3#
 -------------------------------------------------------------------------------
->> write memory
+[R3] [2001:db8:acab:a001::130] >> write memory
 
 Building configuration...
 [OK]
-                                                                                                                   
-100% [##############################################] [3 of 3] [Time:  0:01:46]
+                                                                               
+100% [############################################] [3 of 3] [Time:  0:01:50]
 
 ===============================================================================
 +-----------------------------------------------------------------------------+
 |                              SCRIPT STATISTICS                              |
 |-----------------------------------------------------------------------------|
-| Script started:           14/04/2018 21:06:33                               |
-| Script ended:             14/04/2018 21:08:20                               |
-| Script duration (h:m:s):  0:01:47                                           |
+| Script started:           15/04/2018 14:34:40                               |
+| Script ended:             15/04/2018 14:36:31                               |
+| Script duration (h:m:s):  0:01:51                                           |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -288,24 +292,23 @@ aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt
 Username: a.lambreca
 Password: 
 Retype password: 
-                                                                                                                   
-N/A% [                                              ] [0 of 3] [ETA:  --:--:--]
+                                                                               
+N/A% [                                            ] [0 of 3] [ETA:  --:--:--]
 ===============================================================================
-Connecting to device: r1.a-corp.com
--------------------------------------------------------------------------------
-r1.a-corp.com >> Authentication error
-                                                                                                                   
- 33% [###############                               ] [1 of 3] [ETA:   0:00:06]
+15/04/2018 14:37:13 - Connecting to device: r1.a-corp.com
+15/04/2018 14:37:16 - Authentication error - r1.a-corp.com
+                                                                               
+ 33% [##############                              ] [1 of 3] [ETA:   0:00:06]
 ===============================================================================
-Connecting to device: 192.168.1.120
--------------------------------------------------------------------------------
-192.168.1.120 >> TCP/22 connectivity error
-                                                                                                                   
- 66% [##############################                ] [2 of 3] [ETA:   0:00:10]
+15/04/2018 14:37:16 - Connecting to device: 192.168.1.120
+15/04/2018 14:37:34 - TCP/22 connectivity error - 192.168.1.120
+                                                                               
+ 66% [#############################               ] [2 of 3] [ETA:   0:00:10]
 ===============================================================================
-Connecting to device: 2001:db8:acab:a001::130
+15/04/2018 14:37:34 - Connecting to device: 2001:db8:acab:a001::130
+15/04/2018 14:37:39 - Successfully connected - 2001:db8:acab:a001::130
 -------------------------------------------------------------------------------
->> do sh ip int b | i up
+[R3] [2001:db8:acab:a001::130] >> do sh ip int b | i up
 
 
 config term
@@ -315,28 +318,28 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 R3(config)#end
 R3#
 -------------------------------------------------------------------------------
->> do sh clock
+[R3] [2001:db8:acab:a001::130] >> do sh clock
 
 config term
 Enter configuration commands, one per line.  End with CNTL/Z.
 R3(config)#do sh clock
-*21:10:07.511 UTC Sat Apr 14 2018
+*14:37:55.159 UTC Sun Apr 15 2018
 R3(config)#end
 R3#
 -------------------------------------------------------------------------------
->> write memory
+[R3] [2001:db8:acab:a001::130] >> write memory
 
 Building configuration...
 [OK]
-                                                                                                                   
-100% [##############################################] [3 of 3] [Time:  0:00:56]
+                                                                               
+100% [############################################] [3 of 3] [Time:  0:00:56]
 
 ===============================================================================
 +-----------------------------------------------------------------------------+
 |                              SCRIPT STATISTICS                              |
 |-----------------------------------------------------------------------------|
-| Script started:           14/04/2018 21:09:24                               |
-| Script ended:             14/04/2018 21:10:21                               |
+| Script started:           15/04/2018 14:37:12                               |
+| Script ended:             15/04/2018 14:38:09                               |
 | Script duration (h:m:s):  0:00:57                                           |
 +-----------------------------------------------------------------------------+
 ```
@@ -344,7 +347,7 @@ Building configuration...
 # cmdrunner.log
 
 ```
-14/04/2018 21:09:28 - WARNING - Authentication failure: unable to connect cisco_ios r1.a-corp.com:22
+15/04/2018 14:37:16 - WARNING - Authentication failure: unable to connect cisco_ios r1.a-corp.com:22
 Authentication failed.
-14/04/2018 21:09:46 - WARNING - Connection to device timed-out: cisco_ios 192.168.1.120:22
+15/04/2018 14:37:34 - WARNING - Connection to device timed-out: cisco_ios 192.168.1.120:22
 ```
