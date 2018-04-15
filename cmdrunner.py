@@ -121,6 +121,7 @@ for device in pbar(devices):
         print(current_time, '- Successfully connected -', device['ip'])
         print('-'*79)
 
+        # Get device's "hostname" from netmiko, and "ip" from .json
         hostname = connection.base_prompt
         ip = (device['ip'])
 
