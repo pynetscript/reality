@@ -6,7 +6,7 @@
 # Last modified date:   15/04/2018
 # Version:              v1.2
 #
-# Script use:           SSH into Cisco IOS devices and run config/show commands
+# Script use:           SSH into Cisco IOS devices and run show commands
 #                       Note: Commands are run one by one (not all at once)
 #                             Supports both IPv4 and IPv6 addresses and FQDNs
 #                             Both Py2 and Py3 compatible
@@ -20,10 +20,9 @@
 # Script input:         Username/Password
 #                       Specify devices as a .json file
 #                       Note: See "router/7200.json" as an example
-#                       Specify show/config commands as a .txt file
-#                       Note: Show commands need "do" in the front
-#                            See "router/cmd.txt" as an example
-#
+#                       Specify show commands as a .txt file
+#                       Note: See "router/cmd.txt" as an example
+#                            
 # Script output:        Cisco IOS command output
 #                       Errors in screen
 #                       Progress bar
@@ -133,7 +132,7 @@ for device in pbar(devices):
             else:
                 print('[{0}] [{1}] >> {2}'.format(hostname, ip, command) + '\n')
                 print(connection.send_command(command))
-                print('-'*79)
+                print('\n' + '-'*79)
 
         # Save running-config to startup-config.
         save_conf = connection.send_command_timing('write memory')
