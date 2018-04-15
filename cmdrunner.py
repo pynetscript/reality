@@ -17,7 +17,7 @@
 #                       Note: A full command looks like:
 #                       ./cmdrunner.py router/7200.json router/cmd.txt
 #
-# Script input:         SSH Username/Password
+# Script input:         Username/Password
 #                       Specify devices as a .json file
 #                       Note: See "router/7200.json" as an example
 #                       Specify show/config commands as a .txt file
