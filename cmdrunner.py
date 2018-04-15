@@ -3,7 +3,7 @@
 ###############################################################################
 # Written by:           Aleks Lambreca
 # Creation date:        24/03/2018
-# Last modified date:   14/04/2018
+# Last modified date:   15/04/2018
 # Version:              v1.2
 #
 # Script use:           SSH into Cisco IOS devices and run config/show commands
@@ -97,7 +97,7 @@ start_time = start_timestamp.strftime('%d/%m/%Y %H:%M:%S')
 
 
 # Progress Bar
-widgets = [' '*34, '\n',
+widgets = ['\n',
            Percentage(), ' ', Bar(marker='#', left='[', right=']'),
            ' ', '[',SimpleProgress(),']',' ' '[', ETA(),']', '\n']
 
@@ -109,7 +109,9 @@ for device in pbar(devices):
     device['password'] = password
     try:
         print(Fore.WHITE + '='*79 + Style.RESET_ALL)
-        print('Connecting to device:', device['ip'])
+        current_timestamp = datetime.datetime.now()
+        current_time = current_timestamp.strftime('%d/%m/%Y %H:%M:%S')
+        print(current_time, '- Connecting to device:', device['ip'])
         print('-'*79)
 
         # SSH into each device from "x.json" (2nd argument).
