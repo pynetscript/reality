@@ -132,7 +132,7 @@ for device in pbar(devices):
                 pass
             else:
                 print('[{0}] [{1}] >> {2}'.format(hostname, ip, command) + '\n')
-                print(connection.send_config_set(command))
+                print(connection.send_command(command))
                 print('-'*79)
 
         # Save running-config to startup-config.
