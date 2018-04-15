@@ -1,0 +1,2 @@
+sh ip int b | i up
+sh clock
