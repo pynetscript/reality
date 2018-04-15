@@ -150,8 +150,8 @@ Then the script will:
 - Show progress bar
 
 Errors:
-- If the is an authentication error we will get an error message `R1.a-corp.com >> Authentication error`
-- If the is an connectivity (TCP/22) error we will get an error message `192.168.1.120 >> TCP/22 connectivity error`
+- If there is an authentication error we will get an error message `15/04/2018 14:37:16 - Authentication error - r1.a-corp.com`
+- If there is an connectivity (TCP/22) error we will get an error message `15/04/2018 14:37:34 - TCP/22 connectivity error - 192.168.1.120`
 - Errors are logged in cmdrunner.log
 
 Finally the script will:
