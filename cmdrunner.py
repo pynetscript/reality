@@ -123,7 +123,7 @@ for device in pbar(devices):
             if command in ['\n', '\r\n']:
                 pass
             else:
-                print(Fore.RED + '>> ' + command + Style.RESET_ALL + '\n')
+                print('[{0}] [{1}] >> {2}'.format(hostname, ip, command) + '\n')
                 print(connection.send_config_set(command))
                 print('-'*79)
 
@@ -133,7 +133,7 @@ for device in pbar(devices):
             save_conf = connection.send_command_timing('')
         if 'Destination filename [startup-config]' in save_conf:
             save_conf = connection.send_command_timing('')
-        print(Fore.RED + '>> write memory' + "\n" + Style.RESET_ALL)
+        print('[{0}] [{1}] >> write memory'.format(hostname, ip) + '\n')
         print(save_conf)
 
         # Disconnect SSH session.
