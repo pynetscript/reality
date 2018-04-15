@@ -134,15 +134,6 @@ for device in pbar(devices):
                 print(connection.send_command(command))
                 print('\n' + '-'*79)
 
-        # Save running-config to startup-config.
-        save_conf = connection.send_command_timing('write memory')
-        if 'Overwrite the previous NVRAM configuration?[confirm]' in save_conf:
-            save_conf = connection.send_command_timing('')
-        if 'Destination filename [startup-config]' in save_conf:
-            save_conf = connection.send_command_timing('')
-        print('[{0}] [{1}] >> write memory'.format(hostname, ip) + '\n')
-        print(save_conf)
-
         # Disconnect SSH session.
         connection.disconnect()
 
