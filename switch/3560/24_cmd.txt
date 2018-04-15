@@ -1,2 +1,2 @@
-sh ip route | b Gate
+sh ip int b | i up
 sh clock
