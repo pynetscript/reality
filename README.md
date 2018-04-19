@@ -13,8 +13,7 @@
   - 1st argument: `cmdrunner.py`
   - 2nd argument: `/x.json`
   - 3rd argument: `/x.txt`
-  - A full command looks like:
-    - `./cmdrunner.py router/7200.json router/cmd.txt`
+  - A full command looks like: `./cmdrunner.py router/7200.json router/cmd.txt`
 
 ### Script input
 - Username/Password
