@@ -16,21 +16,20 @@
   - A full command looks like:
     - `./cmdrunner.py router/7200.json router/cmd.txt`
 
-**Script input**         
+### Script input
 - Username/Password
 - Specify devices as a .json file
   - See `router/7200.json` as an example
 - Specify show commands as a .txt file
-  - See `router/cmd.txt` as an example 
+  - See `router/cmd.txt` as an example
 
-**Script output**      
+### Script output
 - Cisco IOS command output
 - Errors in screen
 - Progress bar
 - Statistics
 - Log erros in `cmdrunner.log`
 - Travis CI build notification to Slack private channel
-
 
 
 # Prerequisites
