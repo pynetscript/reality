@@ -4,7 +4,7 @@
 
 # reality
 
-## Script use
+### Script use
 - SSH into Cisco IOS devices and run show commands
   - Commands are run one by one (not all at once)
   - Supports both IPv4 and IPv6 addresses and FQDNs
