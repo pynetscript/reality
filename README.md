@@ -252,14 +252,14 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 +-----------------------------------------------------------------------------+
 ```
 
-# syslog (successful)
+### syslog (successful)
 
 ```
 *Apr 22 2018 21:02:37: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin Change Control/Ticket: 12345"
 *Apr 22 2018 21:02:39: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End Change Control/Ticket: 12345"
 ```
 
-# cmdrunner.log (successful)
+### cmdrunner.log (successful)
 
 ```
 22/04/2018 21:02:38 - INFO - Connection to device successful: r1.a-corp.com
@@ -326,14 +326,14 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 +-----------------------------------------------------------------------------+
 ```
 
-# syslog (unsuccessful)
+### syslog (unsuccessful)
 
 ```
 *Apr 22 2018 21:05:59: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin Change Control/Ticket: 54321"
 *Apr 22 2018 21:06:01: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End Change Control/Ticket: 54321"
 ```
 
-# cmdrunner.log (unsuccessful)
+### cmdrunner.log (unsuccessful)
 
 ```
 22/04/2018 21:05:36 - WARNING - Authentication failure: unable to connect cisco_ios r1.a-corp.com:22
