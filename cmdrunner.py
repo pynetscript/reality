@@ -35,10 +35,6 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-from colorama import init
-from colorama import Fore
-from colorama import Style
-from progressbar import *
 
 # Standard library modules
 import netmiko
@@ -49,6 +45,11 @@ import datetime
 import time
 import logging
 import os
+
+from colorama import init
+from colorama import Fore
+from colorama import Style
+from progressbar import *
 
 # Local modules
 import tools
