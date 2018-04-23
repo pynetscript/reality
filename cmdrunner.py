@@ -47,9 +47,7 @@ import logging
 import os
 import re
 
-from colorama import init
-from colorama import Fore
-from colorama import Style
+from colorama import Fore, Style
 from progressbar import *
 
 # Local modules
