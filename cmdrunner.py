@@ -89,6 +89,7 @@ with open(sys.argv[2]) as cmd_file:
 
     
 # Prompt for username and password
+print(Fore.WHITE + '='*79 + Style.RESET_ALL)
 username, password = tools.get_credentials()
 
 
