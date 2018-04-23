@@ -77,7 +77,7 @@ netmiko_ex_auth = (netmiko.ssh_exception.NetMikoAuthenticationException)
 
 # If arguments not equal to 3 we get an error.
 if len(sys.argv) != 3:
-    print('>> Usage:', sys.argv[0].split('/')[-1], '/x.json /x.txt')        #Changed
+    print('>> Usage:', sys.argv[0].split('/')[-1], '/x.json /x.txt')
     exit()
 
 
