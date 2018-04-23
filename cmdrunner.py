@@ -156,11 +156,6 @@ for device in pbar(devices):
         # Disconnect SSH session.
         connection.disconnect()
 
-        # Log the successful configuration on the working directory in cmdrunner.log
-        success_configured = ('Configuration to device successful:', device['ip'])
-        success_configured_str = ' '.join(success_configured)
-        logger.info(success_configured_str)
-
 
     except netmiko_ex_auth as ex_auth:
         current_timestamp = datetime.datetime.now()
