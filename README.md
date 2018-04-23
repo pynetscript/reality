@@ -34,7 +34,7 @@
 # Prerequisites
 
 - SSH (TCP/22) reachability to devices.    
-- Local username with privilege 15 (example: `user a.lambreca priv 15 secret cisco`).
+- Username with privilege 15 (example: `user a.lambreca priv 15 secret cisco`).
 - Alias command to save configuration: `alias exec wr copy run start`
 
 
@@ -72,8 +72,6 @@ pip install -r requirements.txt
   - Prompts for password twice but doesn't show it on screen (getpass)
     - If passwords match each other the script will continue to run
     - If password don't match each other we will get an error message `>> Passwords do not match. Please try again. ` and the script will prompt us again until passwords match each other.
-- Function (count_letters)
-  - Count how many chars are in a string
 
 
 # 2nd argument (.json)
@@ -124,14 +122,12 @@ Let's use the following example to explain the script:
 
 First the script will:     
 - Create a log file named "cmdrunner.log".
-- Prompt us for Change Control/Ticket ID.
 - Prompt us for a username and a password
   - For more information on password part look "Function (get_credentials)" at **tools.py** section.
 - Show progress bar
 
 ```
 ===============================================================================
-Change Control/Ticket: 12345
 Username: a.lambreca
 Password: 
 Retype password: 
@@ -144,10 +140,10 @@ Then the script will:
 - Timestamp the date & time the script started in D/M/Y H:M:S format. 
 - SSH to the first device in the <2nd_argument> (.json). 
   - Log the successful connection in cmdrunner.log
-- Send "log" command to log begin timestamp & Change Control/Ticker ID locally on the device.
+- Send "log" command to log "begin timestamp" & "script used" locally on the device.
 - Run all the commands from the <3rd argument> (.txt) one by one.  
   - Don't run empty line as command.  
-- Send "log" command to log end timestamp & Change Control/Ticker ID locally on the device.
+- Send "log" command to log "end timestamp" & "script used" locally on the device.
 - Disconnect the SSH session.  
 - Log the successful configuration in cmdrunner.log
 - Show progress bar
@@ -167,10 +163,9 @@ Finally the script will:
 +-----------------------------------------------------------------------------+
 |                              SCRIPT STATISTICS                              |
 |-----------------------------------------------------------------------------|
-| Change Control/Ticket:   12345                                              |
-| Script started:          22/04/2018 21:02:29                                |
-| Script ended:            22/04/2018 21:03:04                                |
-| Script duration (h:m:s): 0:00:34                                            |
+| Script started:          23/04/2018 19:05:39                                |
+| Script ended:            23/04/2018 19:06:10                                |
+| Script duration (h:m:s): 0:00:31                                            |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -179,15 +174,14 @@ Finally the script will:
 ```
 aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt 
 ===============================================================================
-Change Control/Ticket: 12345
 Username: a.lambreca
 Password: 
 Retype password: 
                                                                                
 N/A% [                                            ] [0 of 3] [ETA:  --:--:--]
 ===============================================================================
-22/04/2018 21:02:30 - Connecting to device: r1.a-corp.com
-22/04/2018 21:02:38 - Connection to device successful: r1.a-corp.com
+23/04/2018 19:05:39 - Connecting to device: r1.a-corp.com
+23/04/2018 19:05:45 - Connection to device successful: r1.a-corp.com
 -------------------------------------------------------------------------------
 [R1] [r1.a-corp.com] >> sh ip int b | i up
 
@@ -198,14 +192,14 @@ FastEthernet0/0        192.168.1.110   YES NVRAM  up                    up
 [R1] [r1.a-corp.com] >> sh clock
 
 
-*21:02:38.771 UTC Sun Apr 22 2018
+*19:05:46.719 UTC Mon Apr 23 2018
 
 -------------------------------------------------------------------------------
                                                                                
- 33% [##############                              ] [1 of 3] [ETA:   0:00:24]
+ 33% [##############                              ] [1 of 3] [ETA:   0:00:21]
 ===============================================================================
-22/04/2018 21:02:42 - Connecting to device: 192.168.1.120
-22/04/2018 21:02:49 - Connection to device successful: 192.168.1.120
+23/04/2018 19:05:50 - Connecting to device: 192.168.1.120
+23/04/2018 19:05:55 - Connection to device successful: 192.168.1.120
 -------------------------------------------------------------------------------
 [R2] [192.168.1.120] >> sh ip int b | i up
 
@@ -217,14 +211,14 @@ Loopback0              10.2.0.1        YES NVRAM  up                    up
 [R2] [192.168.1.120] >> sh clock
 
 
-*21:02:50.263 UTC Sun Apr 22 2018
+*19:05:57.687 UTC Mon Apr 23 2018
 
 -------------------------------------------------------------------------------
                                                                                
- 66% [#############################               ] [2 of 3] [ETA:   0:00:11]
+ 66% [#############################               ] [2 of 3] [ETA:   0:00:10]
 ===============================================================================
-22/04/2018 21:02:54 - Connecting to device: 2001:db8:acab:a001::130
-22/04/2018 21:02:59 - Connection to device successful: 2001:db8:acab:a001::130
+23/04/2018 19:06:00 - Connecting to device: 2001:db8:acab:a001::130
+23/04/2018 19:06:05 - Connection to device successful: 2001:db8:acab:a001::130
 -------------------------------------------------------------------------------
 [R3] [2001:db8:acab:a001::130] >> sh ip int b | i up
 
@@ -235,39 +229,38 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 [R3] [2001:db8:acab:a001::130] >> sh clock
 
 
-*21:03:00.479 UTC Sun Apr 22 2018
+*19:06:07.903 UTC Mon Apr 23 2018
 
 -------------------------------------------------------------------------------
                                                                                
-100% [############################################] [3 of 3] [Time:  0:00:33]
+100% [############################################] [3 of 3] [Time:  0:00:30]
 
 ===============================================================================
 +-----------------------------------------------------------------------------+
 |                              SCRIPT STATISTICS                              |
 |-----------------------------------------------------------------------------|
-| Change Control/Ticket:   12345                                              |
-| Script started:          22/04/2018 21:02:29                                |
-| Script ended:            22/04/2018 21:03:04                                |
-| Script duration (h:m:s): 0:00:34                                            |
+| Script started:          23/04/2018 19:05:39                                |
+| Script ended:            23/04/2018 19:06:10                                |
+| Script duration (h:m:s): 0:00:31                                            |
 +-----------------------------------------------------------------------------+
 ```
 
 ### syslog (successful)
 
 ```
-*Apr 22 2018 21:02:37: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin Change Control/Ticket: 12345"
-*Apr 22 2018 21:02:39: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End Change Control/Ticket: 12345"
+*Apr 23 2018 19:05:45: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin script: cmdrunner.py router/7200.json router/cmd.txt"
+*Apr 23 2018 19:05:47: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End script: cmdrunner.py router/7200.json router/cmd.txt"
 ```
 
 ### cmdrunner.log (successful)
 
 ```
-22/04/2018 21:02:38 - INFO - Connection to device successful: r1.a-corp.com
-22/04/2018 21:02:42 - INFO - Configuration to device successful: r1.a-corp.com
-22/04/2018 21:02:49 - INFO - Connection to device successful: 192.168.1.120
-22/04/2018 21:02:54 - INFO - Configuration to device successful: 192.168.1.120
-22/04/2018 21:02:59 - INFO - Connection to device successful: 2001:db8:acab:a001::130
-22/04/2018 21:03:04 - INFO - Configuration to device successful: 2001:db8:acab:a001::130
+23/04/2018 19:05:45 - INFO - Connection to device successful: r1.a-corp.com
+23/04/2018 19:05:50 - INFO - Configuration to device successful: r1.a-corp.com
+23/04/2018 19:05:55 - INFO - Connection to device successful: 192.168.1.120
+23/04/2018 19:06:00 - INFO - Configuration to device successful: 192.168.1.120
+23/04/2018 19:06:05 - INFO - Connection to device successful: 2001:db8:acab:a001::130
+23/04/2018 19:06:10 - INFO - Configuration to device successful: 2001:db8:acab:a001::130
 ```
 
 
@@ -280,25 +273,24 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 ```
 aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt 
 ===============================================================================
-Change Control/Ticket: 54321
 Username: a.lambreca
 Password: 
 Retype password: 
                                                                                
 N/A% [                                            ] [0 of 3] [ETA:  --:--:--]
 ===============================================================================
-22/04/2018 21:05:33 - Connecting to device: r1.a-corp.com
-22/04/2018 21:05:36 - Authentication error: r1.a-corp.com
+23/04/2018 19:07:52 - Connecting to device: r1.a-corp.com
+23/04/2018 19:07:55 - Authentication error: r1.a-corp.com
                                                                                
  33% [##############                              ] [1 of 3] [ETA:   0:00:06]
 ===============================================================================
-22/04/2018 21:05:36 - Connecting to device: 192.168.1.120
-22/04/2018 21:05:54 - TCP/22 connectivity error: 192.168.1.120
+23/04/2018 19:07:55 - Connecting to device: 192.168.1.120
+23/04/2018 19:08:13 - TCP/22 connectivity error: 192.168.1.120
                                                                                
  66% [#############################               ] [2 of 3] [ETA:   0:00:10]
 ===============================================================================
-22/04/2018 21:05:54 - Connecting to device: 2001:db8:acab:a001::130
-22/04/2018 21:05:59 - Connection to device successful: 2001:db8:acab:a001::130
+23/04/2018 19:08:13 - Connecting to device: 2001:db8:acab:a001::130
+23/04/2018 19:08:18 - Connection to device successful: 2001:db8:acab:a001::130
 -------------------------------------------------------------------------------
 [R3] [2001:db8:acab:a001::130] >> sh ip int b | i up
 
@@ -309,7 +301,7 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 [R3] [2001:db8:acab:a001::130] >> sh clock
 
 
-*21:06:01.031 UTC Sun Apr 22 2018
+*19:08:20.263 UTC Mon Apr 23 2018
 
 -------------------------------------------------------------------------------
                                                                                
@@ -319,9 +311,8 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 +-----------------------------------------------------------------------------+
 |                              SCRIPT STATISTICS                              |
 |-----------------------------------------------------------------------------|
-| Change Control/Ticket:   54321                                              |
-| Script started:          22/04/2018 21:05:33                                |
-| Script ended:            22/04/2018 21:06:04                                |
+| Script started:          23/04/2018 19:07:51                                |
+| Script ended:            23/04/2018 19:08:23                                |
 | Script duration (h:m:s): 0:00:31                                            |
 +-----------------------------------------------------------------------------+
 ```
@@ -329,16 +320,16 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 ### syslog (unsuccessful)
 
 ```
-*Apr 22 2018 21:05:59: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin Change Control/Ticket: 54321"
-*Apr 22 2018 21:06:01: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End Change Control/Ticket: 54321"
+*Apr 23 2018 19:08:19: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin script: cmdrunner.py router/7200.json router/cmd.txt"
+*Apr 23 2018 19:08:20: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End script: cmdrunner.py router/7200.json router/cmd.txt"
 ```
 
 ### cmdrunner.log (unsuccessful)
 
 ```
-22/04/2018 21:05:36 - WARNING - Authentication failure: unable to connect cisco_ios r1.a-corp.com:22
+23/04/2018 19:07:55 - WARNING - Authentication failure: unable to connect cisco_ios r1.a-corp.com:22
 Authentication failed.
-22/04/2018 21:05:54 - WARNING - Connection to device timed-out: cisco_ios 192.168.1.120:22
-22/04/2018 21:05:59 - INFO - Connection to device successful: 2001:db8:acab:a001::130
-22/04/2018 21:06:04 - INFO - Configuration to device successful: 2001:db8:acab:a001::130
+23/04/2018 19:08:13 - WARNING - Connection to device timed-out: cisco_ios 192.168.1.120:22
+23/04/2018 19:08:18 - INFO - Connection to device successful: 2001:db8:acab:a001::130
+23/04/2018 19:08:23 - INFO - Configuration to device successful: 2001:db8:acab:a001::130
 ```
