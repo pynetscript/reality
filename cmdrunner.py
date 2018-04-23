@@ -3,7 +3,7 @@
 ###############################################################################
 # Written by:           Aleks Lambreca
 # Creation date:        24/03/2018
-# Last modified date:   22/04/2018
+# Last modified date:   23/04/2018
 # Version:              v1.2
 #
 # Script use:           SSH into Cisco IOS devices and run show commands
@@ -87,12 +87,7 @@ with open(sys.argv[1]) as dev_file:
 with open(sys.argv[2]) as cmd_file:
     commands = cmd_file.readlines()
 
-
-# Prompt for Change Control/Ticket
-print(Fore.WHITE + '='*79 + Style.RESET_ALL)
-cc = tools.get_input('Change Control/Ticket: ')
-
-
+    
 # Prompt for username and password
 username, password = tools.get_credentials()
 
@@ -130,8 +125,8 @@ for device in pbar(devices):
         print(success_connected_str)
         print('-'*79)
 
-        # Log the successful connection on the working directory in cmdrunner.log
-        # Parse out the datestamp
+        # Log the successful connection on the working directory in "cmdrunner.log".
+        # Parse out the date & time.
         regex = r'(\d+/\d+/\d+\s+\d+:\d+:\d+\s+-\s+)(.*)'
         m_conn = re.match(regex, success_connected_str)
         logger.info(m_conn.group(2))
@@ -141,7 +136,8 @@ for device in pbar(devices):
         ip = (device['ip'])
 
         # Log "start" locally on the device.
-        connection.send_command('send log 6 "Begin Change Control/Ticket: {}"'.format(cc))
+        sysargv = ' '.join(sys.argv)
+        connection.send_command('send log 6 "Begin script: {}"'.format(sysargv))
 
         # Send each command from "x.txt" to device (3rd argument).
         for command in commands:
@@ -154,7 +150,7 @@ for device in pbar(devices):
                 print('\n' + '-'*79)
 
         # Log "end" locally on the device.
-        connection.send_command('send log 6 "End Change Control/Ticket: {}"'.format(cc))
+        connection.send_command('send log 6 "End script: {}"'.format(sysargv))
 
         # Disconnect SSH session.
         connection.disconnect()
@@ -189,18 +185,11 @@ total_time = end_timestamp - start_timestamp
 total_time = str(total_time).split(".")[0]
 
 
-# Count how many chars is Change Control/Ticket and subtract 50 from it.
-# Result (rest) used in SCRIPT STATISTICS
-cc_counter = tools.count_letters(cc)
-rest = 50 - cc_counter
-
-
 # SCRIPT STATISTICS
 print(Fore.WHITE + '='*79 + Style.RESET_ALL)
 print("+" + "-"*77 + "+")
 print("|" + " "*30 + "SCRIPT STATISTICS" +      " "*30 + "|")
 print("|" + "-"*77 + "|")
-print("| Change Control/Ticket:  ", cc,         " "*rest + "|")
 print("| Script started:         ", start_time, " "*31 + "|")
 print("| Script ended:           ", end_time,   " "*31 + "|")
 print("| Script duration (h:m:s):", total_time, " "*43 + "|")
