@@ -74,6 +74,17 @@ pip install -r requirements.txt
     - If password don't match each other we will get an error message `>> Passwords do not match. Please try again. ` and the script will prompt us again until passwords match each other.
 
 
+
+# 3rd argument (.txt)
+
+Create a txt file with the show commands that you want to run on the devices:    
+
+```
+sh ip int b | i up
+sh clock
+```
+
+
 # 2nd argument (.json)
 
 - Create a csv file like this example:  
@@ -99,15 +110,6 @@ cisco_ios,2001:db8:acab:a001::130
 
 - Finally i copy/pasted the output into router/7200.json which is going to be used by cmdrunner.py as the <2nd_argument>.   
 
-
-# 3rd argument (.txt)
-
-Create a txt file with the show commands that you want to run on the devices:    
-
-```
-sh ip int b | i up
-sh clock
-```
 
 # 1st argument (cmdrunner.py)
 
@@ -150,7 +152,7 @@ Then the script will:
 
 Errors:
 - If there is an authentication error we will get an error message `23/04/2018 19:07:55 - Authentication error: r1.a-corp.com`
-- If there is an connectivity (TCP/22) error we will get an error message `23/04/2018 19:08:13 - TCP/22 connectivity error: 192.168.1.120`
+- If there is a connectivity (TCP/22) error we will get an error message `23/04/2018 19:08:13 - TCP/22 connectivity error: 192.168.1.120`
 - Errors are logged in cmdrunner.log
 
 Finally the script will:
