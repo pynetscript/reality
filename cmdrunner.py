@@ -3,7 +3,7 @@
 ###############################################################################
 # Written by:           Aleks Lambreca
 # Creation date:        24/03/2018
-# Last modified date:   23/04/2018
+# Last modified date:   05/08/2018
 # Version:              v1.2
 #
 # Script use:           SSH into Cisco IOS devices and run show commands
