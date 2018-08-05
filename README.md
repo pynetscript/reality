@@ -45,7 +45,7 @@ mkdir /reality/ && cd /reality/
 sudo apt-get install -y python-pip
 sudo apt-get install -y git
 git clone -b https://github.com/pynetscript/reality.git . 
-pip install -r requirements.txt
+pip install -r requirements.txt   # if it fails try: sudo python -m pip install -r requirements.txt
 ```
 
 # .travis.yml
