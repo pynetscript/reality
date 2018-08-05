@@ -121,7 +121,7 @@ for device in pbar(devices):
         #success_connected = (current_time, '- Successfully connected -', device['ip'])
         success_connected = (current_time, '- Connection to device successful:', device['ip'])
         success_connected_str = ' '.join(success_connected)
-        print(success_connected_str)
+        print(Fore.GREEN + success_connected_str + Style.RESET_ALL)
         print('-'*79)
 
         # Log the successful connection on the working directory in "cmdrunner.log".
