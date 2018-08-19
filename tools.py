@@ -20,6 +20,7 @@ import atexit
 from colorama import init, Fore, Style
 from getpass import getpass
 from collections import Counter
+from os.path import expanduser
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
@@ -126,7 +127,8 @@ def get_netbox_devices():
         
     devices = json.dumps(devices_raw)
 
-    datapath = '/home/aleks/netbox/netbox.json'
+    home = expanduser("~")
+    datapath = (home + '/reality/netbox.json')
 
     with open(datapath, 'w') as file:
         file.write(devices)
