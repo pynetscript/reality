@@ -121,7 +121,10 @@ cisco_ios,2001:db8:acab:a001::130
 
 # 2nd argument (Option 2: GET devices via Netbox API)
 
-- This will only be used if the 2nd argument is "netbox.json" and the file netbox.json exists.
+- This will only be used if the 2nd argument is exactly "netbox.json" and the file netbox.json exists.
+- Additionally for the script to work correctly we need to modify in Netbox > Devices > Platforms, the slugs to be netmiko compatible.
+  - Here is a [screenshot](https://imgur.com/defEoHu) 
+
 - For example these command are legal:
   - `python2 runner.py netbox.json cmd.txt`
   - `python3 runner.py netbox.json cmd.txt`
@@ -129,23 +132,24 @@ cisco_ios,2001:db8:acab:a001::130
   - `python2 runner.py /netbox.json cmd.txt`
   - `python3 runner.py /netbox.json cmd.txt`
  
+ 
 **Common URLs:** 
 - Get all devices from site "a-corp-hq":
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq
 
-- GET a specific role from site "a-corp-hq":
+- Get a specific role from site "a-corp-hq":
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=core-switch
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=distribution-switch
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=access-switch
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=router
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=firewall
 
-- GET a specific tag from site "a-corp-hq":
+- Get a specific tag from site "a-corp-hq":
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&tag=switch
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&tag=router
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&tag=firewall
 
-- GET a specific platform from site "a-corp-hq":
+- Get a specific platform from site "a-corp-hq":
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_asa
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_ios
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_xe
@@ -153,7 +157,7 @@ cisco_ios,2001:db8:acab:a001::130
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_nxos
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_wlc
 
-- GET a specific model (device type) from site "a-corp-hq":
+- Get a specific model (device type) from site "a-corp-hq":
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=asa5545-x
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=isr4331
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=me3400
