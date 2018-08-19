@@ -22,7 +22,6 @@ from colorama import Fore
 from colorama import Style
 from getpass import getpass
 from collections import Counter
-from pprint import pprint as pp
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
