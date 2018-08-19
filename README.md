@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/pynetscript/reality.svg?branch=master)](https://travis-ci.org/pynetscript/reality)
-[![GitHub release](https://img.shields.io/badge/version-1.2-blue.svg)](https://github.com/pynetscript/reality)
+[![GitHub release](https://img.shields.io/badge/version-1.3-blue.svg)](https://github.com/pynetscript/reality)
 
 
 # reality
