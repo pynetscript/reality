@@ -136,38 +136,36 @@ cisco_ios,2001:db8:acab:a001::130
  
 **Common URLs:** 
 - Get all devices from site "a-corp-hq":
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0
 
 - Get a specific role from site "a-corp-hq":
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=core-switch
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=distribution-switch
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=access-switch
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=router
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=firewall
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&role=core-switch
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&role=distribution-switch
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&role=access-switch
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&role=router
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&role=firewall
 
 - Get a specific tag from site "a-corp-hq":
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&tag=switch
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&tag=router
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&tag=firewall
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&tag=switch
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&tag=router
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&tag=firewall
 
 - Get a specific platform from site "a-corp-hq":
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_asa
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_ios
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_xe
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_xr
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_nxos
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_wlc
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&platform=cisco_asa
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&platform=cisco_ios
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&platform=cisco_xe
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&platform=cisco_xr
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&platform=cisco_nxos
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&platform=cisco_wlc
 
 - Get a specific model (device type) from site "a-corp-hq":
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=asa5545-x
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=isr4331
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=me3400
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c2960x-24ps-l
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c2960x-48fps-l
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c3560x-48p-s
-  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c3850-48f-s
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&model=asa5545-x
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&model=isr4331
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&model=ws-c2960x-48fps-l
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&limit=0&model=ws-c3850-48f-s
 
-**Note**: If you want data from all sites just remove "site=a-corp-hq" from the URL.
+**Note**: If you want data from all sites just remove "site=a-corp-hq" from the URL. Also the maximum number of objects that can be returned is 1000 by default. Setting this to "limit=0" or "limit=None" will remove the maximum limit so we can retrieve all matching objects with a single request - [source](https://netbox.readthedocs.io/en/stable/api/overview/#pagination).
+
 
 
 # 1st argument (runner.py)
