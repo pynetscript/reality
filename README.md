@@ -11,17 +11,29 @@
   - Both Py2 and Py3 compatible
 - The script needs 3 arguments to work:
   - 1st argument: `cmdrunner.py`
-  - 2nd argument: `/x.json`
-  - 3rd argument: `/x.txt`
-  - A full command looks like: `./cmdrunner.py router/7200.json router/cmd.txt`
+  - 2nd argument: `x.json`
+  - 3rd argument: `x.txt`
+  - A full command looks like:
+    - `./runner.py router/7200.json router/cmd.txt`
+    - `./runner.py netbox.json cmd.txt`
 
-### Script input
-- Username/Password
+
+### Script input (Option 1: Get devices via local .json file)
 - Specify devices as a .json file
   - See `router/7200.json` as an example
 - Specify show commands as a .txt file
   - See `router/cmd.txt` as an example
-
+- Username/Password
+  
+  
+### Script input (Option 2: GET devices via Netbox API)
+- Needs `./runner.py netbox.json cmd.txt` command to be used
+- Specify Netbox server IP/FQDN
+- Specify API Token
+- Specify URL to GET
+- Username/Password
+  
+  
 ### Script output
 - Cisco IOS command output
 - Errors in screen
@@ -41,11 +53,15 @@
 # Installation
 
 ```
-mkdir /reality/ && cd /reality/
-sudo apt-get install -y python-pip
+sudo apt-get update
 sudo apt-get install -y git
-git clone -b https://github.com/pynetscript/reality.git . 
-pip install -r requirements.txt   # if it fails try: sudo python -m pip install -r requirements.txt
+sudo apt-get install -y python-pip
+sudo apt-get install -y python3-pip
+sudo python -m pip install -U pip
+sudo python3 -m pip install -U pip
+sudo python -m pip install -r requirements.txt
+sudo python3 -m pip install -r requirements.txt
+git clone https://github.com/pynetscript/reality.git
 ```
 
 # .travis.yml
@@ -54,7 +70,7 @@ pip install -r requirements.txt   # if it fails try: sudo python -m pip install 
 - What language: **Python**
 - What versions: **2.7** , **3.4** , **3.5** , **3.6**
 - What to install: **pip install -r requirements.txt**
-- What to run: **python cmdrunner.py**
+- What to run: **python runner.py**
 - Where to send notifications: **pynetscript:3GF5L6jlBvYl9TA5mrcJ87rq** 
   - Install Travis CI on [Slack](https://pynetscript.slack.com) and at some point it will output a slack channel to use.
   - Replace **pynetscript:3GF5L6jlBvYl9TA5mrcJ87rq** with your own channel.
@@ -63,16 +79,8 @@ pip install -r requirements.txt   # if it fails try: sudo python -m pip install 
 
 # tools.py
 
-- tools.py is going to be imported on our main script (cmdrunner.py).
+- "tools.py" is going to be imported on our main script (runner.py) so we have a cleaner main script.
 - This way we have a cleaner main script.
-- Function (get_input)
-  - Get input that is both Py2 and Py3 compatible
-- Function (get_credentials) 
-  - Prompts for username
-  - Prompts for password twice but doesn't show it on screen (getpass)
-    - If passwords match each other the script will continue to run
-    - If password don't match each other we will get an error message `>> Passwords do not match. Please try again. ` and the script will prompt us again until passwords match each other.
-
 
 
 # 3rd argument (.txt)
@@ -85,7 +93,7 @@ sh clock
 ```
 
 
-# 2nd argument (.json)
+# 2nd argument (Option 1: Get devices via local .json file)
 
 - Create a csv file like this example:  
 
@@ -108,10 +116,21 @@ cisco_ios,2001:db8:acab:a001::130
 {"device_type":"cisco_ios","ip":"2001:db8:acab:a001::130"}]
 ```
 
-- Finally i copy/pasted the output into router/7200.json which is going to be used by cmdrunner.py as the <2nd_argument>.   
+- Copy/paste the output into router/7200.json which is going to be used by runner.py as the <2nd_argument>.   
 
 
-# 1st argument (cmdrunner.py)
+# 2nd argument (Option 2: GET devices via Netbox API)
+
+- This will only be used if the 2nd argument is "netbox.json" and the file netbox.json exists.
+- For example these command are legal:
+  - `python2 runner.py netbox.json cmd.txt`
+  - `python3 runner.py netbox.json cmd.txt`
+- For example these command are not legal:
+  - `python2 runner.py /netbox.json cmd.txt`
+  - `python3 runner.py /netbox.json cmd.txt`
+
+
+# 1st argument (runner.py)
 
 This is the main script that we will run.  
 
@@ -119,13 +138,14 @@ Legal examples:
 - `python2 <1st_argument> <2nd_argument> <3rd_argument>`
 - `python3 <1st_argument> <2nd_argument> <3rd_argument>`
 
-Let's use the following example to explain the script:    
-- `python3 cmdrunner.py router/7200.json router/cmd.txt`
+## (Option 1: Get devices via local .json file)
+
+Let's use the following example to explain the script: 
+- `python3 runner.py router/7200.json router/cmd.txt`
 
 First the script will:     
-- Create a log file named "cmdrunner.log".
+- Create a log file named "runner.log".
 - Prompt us for a username and a password
-  - For more information on password part look "Function (get_credentials)" at **tools.py** section.
 - Show progress bar
 
 ```
@@ -138,22 +158,22 @@ N/A% [                                            ] [0 of 3] [ETA:  --:--:--]
 ===============================================================================
 ```
   
-Then the script will:    
+Then the script will run main() function:
 - Timestamp the date & time the script started in D/M/Y H:M:S format. 
 - SSH to the first device in the <2nd_argument> (.json). 
-  - Log the successful connection in cmdrunner.log
+  - Log the successful connection in runner.log
 - Send "log" command to log "begin timestamp" & "script used" locally on the device.
 - Run all the commands from the <3rd argument> (.txt) one by one.  
   - Don't run empty line as command.  
 - Send "log" command to log "end timestamp" & "script used" locally on the device.
 - Disconnect the SSH session.  
-- Log the successful configuration in cmdrunner.log
+- Log the successful configuration in runner.log
 - Show progress bar
 
 Errors:
 - If there is an authentication error we will get an error message `23/04/2018 19:07:55 - Authentication error: r1.a-corp.com`
 - If there is a connectivity (TCP/22) error we will get an error message `23/04/2018 19:08:13 - TCP/22 connectivity error: 192.168.1.120`
-- Errors are logged in cmdrunner.log
+- Errors are logged in runner.log
 
 Finally the script will:
 - Repeat the process for all devices in <2nd_argument> (.json) 
@@ -171,10 +191,10 @@ Finally the script will:
 +-----------------------------------------------------------------------------+
 ```
 
-# cmdrunner.py (successful)
+### runner.py (successful)
 
 ```
-aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt 
+aleks@acorp:~/reality$ python3 runner.py router/7200.json router/cmd.txt 
 ===============================================================================
 Username: a.lambreca
 Password: 
@@ -250,11 +270,11 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 ### syslog (successful)
 
 ```
-*Apr 23 2018 19:05:45: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin script: cmdrunner.py router/7200.json router/cmd.txt"
-*Apr 23 2018 19:05:47: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End script: cmdrunner.py router/7200.json router/cmd.txt"
+*Apr 23 2018 19:05:45: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin script: runner.py router/7200.json router/cmd.txt"
+*Apr 23 2018 19:05:47: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End script: runner.py router/7200.json router/cmd.txt"
 ```
 
-### cmdrunner.log (successful)
+### runner.log (successful)
 
 ```
 23/04/2018 19:05:45 - INFO - Connection to device successful: r1.a-corp.com
@@ -266,14 +286,14 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 ```
 
 
-# cmdrunner.py (unsuccessful)
+#### runner.py (unsuccessful)
 
 - R1 (r1.a-corp.com): I have misconfigured authentication.
 - R2 (192.168.1.120): I have no SSH (TCP/22) reachability.
 - R3 (2001:db8:acab:a001::130): This router is configured correctly.
 
 ```
-aleks@acorp:~/reality$ python3 cmdrunner.py router/7200.json router/cmd.txt 
+aleks@acorp:~/reality$ python3 runner.py router/7200.json router/cmd.txt 
 ===============================================================================
 Username: a.lambreca
 Password: 
@@ -322,8 +342,8 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 ### syslog (unsuccessful)
 
 ```
-*Apr 23 2018 19:08:19: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin script: cmdrunner.py router/7200.json router/cmd.txt"
-*Apr 23 2018 19:08:20: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End script: cmdrunner.py router/7200.json router/cmd.txt"
+*Apr 23 2018 19:08:19: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "Begin script: runner.py router/7200.json router/cmd.txt"
+*Apr 23 2018 19:08:20: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End script: runner.py router/7200.json router/cmd.txt"
 ```
 
 ### cmdrunner.log (unsuccessful)
@@ -334,4 +354,126 @@ Authentication failed.
 23/04/2018 19:08:13 - WARNING - Connection to device timed-out: cisco_ios 192.168.1.120:22
 23/04/2018 19:08:18 - INFO - Connection to device successful: 2001:db8:acab:a001::130
 23/04/2018 19:08:23 - INFO - Configuration to device successful: 2001:db8:acab:a001::130
+```
+
+## (Option 2: GET devices via Netbox API)
+
+Let's use the following example to explain the script: 
+- `python3 runner.py netbox.json cmd.txt`
+
+First the script will:     
+- Create a log file named "runner.log".
+- Prompt us for Netbox server IP/FQDN
+- Prompt us for API token?
+- Prompt us for URL to GET?
+- Run function "get_netbox_devices()" found in tools.py
+- Prompt us for a username and a password
+- Show progress bar
+
+```
+aleks@acorp:~/netbox$ python3 runner.py netbox.json cmd.txt
+===============================================================================
+Netbox server IP/FQDN?: netbox.a-corp.com
+API token?: 2b19a1e2ecb262c70335a9b26172e21de0d9c932
+URL to GET?: /api/dcim/devices/?site=a-corp-hq&tag=router
+===============================================================================
+Username: a.lambreca
+Password: 
+Retype password: 
+                                                                                            
+N/A% [                                                         ] [0 of 2] [ETA:  --:--:--]
+===============================================================================
+```
+  
+Then the script will run main() function:
+- Timestamp the date & time the script started in D/M/Y H:M:S format. 
+- SSH to the first device in the <2nd_argument> (netbox.json). 
+  - Log the successful connection in runner.log
+- Send "log" command to log "begin timestamp" & "script used" locally on the device.
+- Run all the commands from the <3rd argument> (.txt) one by one.  
+  - Don't run empty line as command.  
+- Send "log" command to log "end timestamp" & "script used" locally on the device.
+- Disconnect the SSH session.  
+- Log the successful configuration in runner.log
+- Show progress bar
+
+Errors:
+- If there is an authentication error we will get an error message `19/08/2018 19:50:04 - Authentication error: ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com`
+- If there is a connectivity (TCP/22) error we will get an error message `19/08/2018 19:50:22 - TCP/22 connectivity error: ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com`
+- Errors are logged in runner.log
+
+Finally the script will:
+- Repeat the process for all devices in <2nd_argument> (netbox.json)
+- Timestamp the date & time the script ended in D/M/Y H:M:S format.
+- Subtract start timestamp and end timstamp to get the time (in H:M:S format) of how long the script took to run.
+- Print SCRIPT STATISTICS
+
+```
++-----------------------------------------------------------------------------+
+|                              SCRIPT STATISTICS                              |
+|-----------------------------------------------------------------------------|
+| Script started:          23/04/2018 19:05:39                                |
+| Script ended:            23/04/2018 19:06:10                                |
+| Script duration (h:m:s): 0:00:31                                            |
++-----------------------------------------------------------------------------+
+```
+
+### runner.py (successful)
+
+```
+aleks@acorp:~/netbox$ python3 runner.py netbox.json cmd.txt
+===============================================================================
+Netbox server IP/FQDN?: netbox.a-corp.com
+API token?: 2b19a1e2ecb262c70335a9b26172e21de0d9c932
+What to GET?: /api/dcim/devices/?site=a-corp-hq&tag=router
+===============================================================================
+Username: alambreca
+Password: 
+Retype password: 
+                                                                                            
+N/A% [                                                         ] [0 of 2] [ETA:  --:--:--]
+===============================================================================
+19/08/2018 18:43:28 - Connecting to device: ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com
+19/08/2018 18:43:36 - Connection to device successful: ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com
+-------------------------------------------------------------------------------
+[GR-ATHENS-DC-R1] [ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com] >> sh ip int b | i up
+
+
+FastEthernet0/0        192.168.1.51    YES manual up                    up      
+
+-------------------------------------------------------------------------------
+[GR-ATHENS-DC-R1] [ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com] >> sh clock
+
+*18:43:37.215 UTC Sun Aug 19 2018
+
+-------------------------------------------------------------------------------
+                                                                                            
+ 50% [############################                             ] [1 of 2] [ETA:   0:00:12]
+===============================================================================
+19/08/2018 18:43:40 - Connecting to device: ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com
+19/08/2018 18:43:45 - Connection to device successful: ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com
+-------------------------------------------------------------------------------
+[GR-ATHENS-DC-R2] [ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com] >> sh ip int b | i up
+
+
+FastEthernet0/0        192.168.1.52    YES manual up                    up      
+Loopback0              10.2.0.1        YES NVRAM  up                    up      
+
+-------------------------------------------------------------------------------
+[GR-ATHENS-DC-R2] [ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com] >> sh clock
+
+*18:43:46.815 UTC Sun Aug 19 2018
+
+-------------------------------------------------------------------------------
+                                                                                            
+100% [#########################################################] [2 of 2] [Time:  0:00:21]
+
+===============================================================================
++-----------------------------------------------------------------------------+
+|                              SCRIPT STATISTICS                              |
+|-----------------------------------------------------------------------------|
+| Script started:          19/08/2018 18:43:26                                |
+| Script ended:            19/08/2018 18:43:50                                |
+| Script duration (h:m:s): 0:00:23                                            |
++-----------------------------------------------------------------------------+
 ```
