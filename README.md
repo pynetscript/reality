@@ -473,13 +473,13 @@ N/A% [                                                         ] [0 of 2] [ETA: 
 19/08/2018 18:43:28 - Connecting to device: ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com
 19/08/2018 18:43:36 - Connection to device successful: ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com
 -------------------------------------------------------------------------------
-[GR-ATHENS-DC-R1] [ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com] >> sh ip int b | i up
+[ACORP-HQ-EU-GR-ATHENS-DC-R1] [ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com] >> sh ip int b | i up
 
 
 FastEthernet0/0        192.168.1.51    YES manual up                    up      
 
 -------------------------------------------------------------------------------
-[GR-ATHENS-DC-R1] [ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com] >> sh clock
+[ACORP-HQ-EU-GR-ATHENS-DC-R1] [ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com] >> sh clock
 
 *18:43:37.215 UTC Sun Aug 19 2018
 
@@ -490,14 +490,14 @@ FastEthernet0/0        192.168.1.51    YES manual up                    up
 19/08/2018 18:43:40 - Connecting to device: ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com
 19/08/2018 18:43:45 - Connection to device successful: ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com
 -------------------------------------------------------------------------------
-[GR-ATHENS-DC-R2] [ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com] >> sh ip int b | i up
+[ACORP-HQ-EU-GR-ATHENS-DC-R2] [ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com] >> sh ip int b | i up
 
 
 FastEthernet0/0        192.168.1.52    YES manual up                    up      
 Loopback0              10.2.0.1        YES NVRAM  up                    up      
 
 -------------------------------------------------------------------------------
-[GR-ATHENS-DC-R2] [ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com] >> sh clock
+[ACORP-HQ-EU-GR-ATHENS-DC-R2] [ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com] >> sh clock
 
 *18:43:46.815 UTC Sun Aug 19 2018
 
