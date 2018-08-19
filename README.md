@@ -166,7 +166,7 @@ cisco_ios,2001:db8:acab:a001::130
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c3560x-48p-s
   - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c3850-48f-s
 
-** Note**: If you want data from all sites just remove "site=a-corp-hq" from the URL.
+**Note**: If you want data from all sites just remove "site=a-corp-hq" from the URL.
 
 
 # 1st argument (runner.py)
