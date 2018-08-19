@@ -59,9 +59,9 @@ sudo apt-get install -y python-pip
 sudo apt-get install -y python3-pip
 sudo python -m pip install -U pip
 sudo python3 -m pip install -U pip
+cd ~ && git clone https://github.com/pynetscript/reality.git && cd reality
 sudo python -m pip install -r requirements.txt
 sudo python3 -m pip install -r requirements.txt
-git clone https://github.com/pynetscript/reality.git
 ```
 
 # .travis.yml
