@@ -17,9 +17,7 @@ import signal
 import os
 import readline
 import atexit
-from colorama import init
-from colorama import Fore
-from colorama import Style
+from colorama import init, Fore, Style
 from getpass import getpass
 from collections import Counter
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
