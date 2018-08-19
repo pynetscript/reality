@@ -128,6 +128,41 @@ cisco_ios,2001:db8:acab:a001::130
 - For example these command are not legal:
   - `python2 runner.py /netbox.json cmd.txt`
   - `python3 runner.py /netbox.json cmd.txt`
+ 
+**Common URLs:** 
+- Get all devices from site "a-corp-hq":
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq
+
+- GET a specific role from site "a-corp-hq":
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=core-switch
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=distribution-switch
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=access-switch
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=router
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&role=firewall
+
+- GET a specific tag from site "a-corp-hq":
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&tag=switch
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&tag=router
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&tag=firewall
+
+- GET a specific platform from site "a-corp-hq":
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_asa
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_ios
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_xe
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_xr
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_nxos
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&platform=cisco_wlc
+
+- GET a specific model (device type) from site "a-corp-hq":
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=asa5545-x
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=isr4331
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=me3400
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c2960x-24ps-l
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c2960x-48fps-l
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c3560x-48p-s
+  - https://netbox.a-corp.com/api/dcim/devices/?site=a-corp-hq&model=ws-c3850-48f-s
+
+** Note**: If you want data from all sites just remove "site=a-corp-hq" from the URL.
 
 
 # 1st argument (runner.py)
