@@ -132,6 +132,7 @@ cisco_ios,2001:db8:acab:a001::130
   - `python2 runner.py /netbox.json cmd.txt`
   - `python3 runner.py /netbox.json cmd.txt`
  
+ - https://netbox.readthedocs.io/en/stable/api/overview/
  
 **Common URLs:** 
 - Get all devices from site "a-corp-hq":
