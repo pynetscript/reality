@@ -5,38 +5,6 @@
 # Creation date:        24/03/2018
 # Last modified date:   19/08/2018
 # Version:              v1.3
-#
-# Script use:           SSH into Cisco IOS devices and run show commands
-#                       Note: Commands are run one by one (not all at once)
-#                             Supports both IPv4 and IPv6 addresses and FQDNs
-#                             Both Py2 and Py3 compatible
-#                       The script needs 3 arguments to work:
-#                       - 1st argument: runner.py
-#                       - 2nd argument: x.json
-#                       - 3rd argument: x.txt
-#                       Note: A full command looks like:
-#                       ./runner.py router/7200.json router/cmd.txt
-#                       ./runner.py netbox.json cmd.txt
-#
-# Script input:         Option 1) Get devices via local .json file
-#                       - Specify devices as a .json file
-#                       - Note: See "router/7200.json" as an example
-#                       - Specify show commands as a .txt file
-#                       - Note: See "router/cmd.txt" as an example
-#                       - Username/Password
-#                       Option 2) GET devices via Netbox API
-#                       - Needs ./runner.py netbox.json cmd.txt to be used
-#                       - Specify Netbox server IP/FQDN
-#                       - Specify API Token
-#                       - Specify what to GET
-#                       - Username/Password
-#                            
-# Script output:        Cisco IOS command output
-#                       Errors in screen
-#                       Progress bar
-#                       Statistics
-#                       Log success/erros in runner.log
-#                       Travis CI build notification to Slack private channel
 ###############################################################################
 
 
