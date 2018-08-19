@@ -285,7 +285,6 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 23/04/2018 19:06:10 - INFO - Configuration to device successful: 2001:db8:acab:a001::130
 ```
 
-
 #### runner.py (unsuccessful)
 
 - R1 (r1.a-corp.com): I have misconfigured authentication.
