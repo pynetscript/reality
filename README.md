@@ -29,7 +29,6 @@
 ### Script input (Option 2: GET devices via Netbox API)
 - Needs `./runner.py netbox.json cmd.txt` command to be used
 - Specify Netbox server IP/FQDN
-- Specify API Token
 - Specify URL to GET
 - Username/Password
   
@@ -80,7 +79,6 @@ sudo python3 -m pip install -r requirements.txt
 # tools.py
 
 - "tools.py" is going to be imported on our main script (runner.py) so we have a cleaner main script.
-- This way we have a cleaner main script.
 
 
 # 3rd argument (.txt)
@@ -122,8 +120,9 @@ cisco_ios,2001:db8:acab:a001::130
 # 2nd argument (Option 2: GET devices via Netbox API)
 
 - This will only be used if the 2nd argument is exactly "netbox.json" and the file netbox.json exists.
-- Need to add the API token in the environment variable with the `export NETBOX_TOKEN=0123456789a0123456789b0123456789c0123456` command.
+- Need to add the API token in the environment variable "/etc/environment".
   - Token created at https://netbox.a-corp.com/user/api-tokens/
+  - Add token with `NETBOX_TOKEN="0123456789a0123456789b0123456789c0123456"` format.
 - Additionally for the script to work correctly we need to modify in Netbox > Devices > Platforms, the slugs to be netmiko compatible.
   - Here is a [screenshot](https://imgur.com/defEoHu) 
 
