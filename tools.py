@@ -1,7 +1,7 @@
 ###############################################################################
 # Written by:           Aleks Lambreca
 # Creation date:        24/03/2018
-# Last modified date:   19/08/2018
+# Last modified date:   20/08/2018
 ###############################################################################
 
 
@@ -105,13 +105,20 @@ def get_netbox_devices():
     """
     print(Fore.WHITE + '='*79 + Style.RESET_ALL)
     NETBOX = ('https://' + get_input('Netbox server IP/FQDN?: '))
-    TOKEN = (get_input('API token?: '))
     GET = ( get_input('What to GET?: '))
 
-    headers = {  
+    NETBOX_TOKEN = os.environ.get('NETBOX_TOKEN')
+    if NETBOX_TOKEN is None:
+        NOT_FOUND = 'NETBOX_TOKEN was not found in environment variable.'
+        COMMAND = 'Add a token with the "export NETBOX_TOKEN=0123456789a0123456789b0123456789c0123456" command.'
+        print('\n'
+              '{E1} {E2} \n'.format(E1=NOT_FOUND, E2=COMMAND))
+        raise NetboxAPITokenNotFound()
+
+    headers = {
+        'Authorization': 'Token {}'.format(NETBOX_TOKEN),
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'Token ' + TOKEN
+        'Accept': 'application/json'
     }
 
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
