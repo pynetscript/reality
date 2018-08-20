@@ -10,7 +10,7 @@
   - Supports both IPv4 and IPv6 addresses and FQDNs
   - Both Py2 and Py3 compatible
 - The script needs 3 arguments to work:
-  - 1st argument: `cmdrunner.py`
+  - 1st argument: `runner.py`
   - 2nd argument: `x.json`
   - 3rd argument: `x.txt`
   - A full command looks like:
@@ -39,7 +39,7 @@
 - Errors in screen
 - Progress bar
 - Statistics
-- Log success/erros in `cmdrunner.log`
+- Log success/erros in `runner.log`
 - Travis CI build notification to Slack private channel
 
 
@@ -385,7 +385,7 @@ FastEthernet0/0        192.168.1.130   YES NVRAM  up                    up
 *Apr 23 2018 19:08:20: %SYS-6-USERLOG_INFO: Message from tty2(user id: a.lambreca): "End script: runner.py router/7200.json router/cmd.txt"
 ```
 
-### cmdrunner.log (unsuccessful)
+### runner.log (unsuccessful)
 
 ```
 23/04/2018 19:07:55 - WARNING - Authentication failure: unable to connect cisco_ios r1.a-corp.com:22
