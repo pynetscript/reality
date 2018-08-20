@@ -122,6 +122,8 @@ cisco_ios,2001:db8:acab:a001::130
 # 2nd argument (Option 2: GET devices via Netbox API)
 
 - This will only be used if the 2nd argument is exactly "netbox.json" and the file netbox.json exists.
+- Need to add the API token in the environment variable with the `export NETBOX_TOKEN=0123456789a0123456789b0123456789c0123456` command.
+  - Token created at https://netbox.a-corp.com/user/api-tokens/
 - Additionally for the script to work correctly we need to modify in Netbox > Devices > Platforms, the slugs to be netmiko compatible.
   - Here is a [screenshot](https://imgur.com/defEoHu) 
 
@@ -401,7 +403,6 @@ Let's use the following example to explain the script:
 First the script will:     
 - Create a log file named "runner.log".
 - Prompt us for Netbox server IP/FQDN
-- Prompt us for API token?
 - Prompt us for URL to GET?
 - Run function "get_netbox_devices()" found in tools.py
 - Prompt us for a username and a password
@@ -411,7 +412,6 @@ First the script will:
 aleks@acorp:~/netbox$ python3 runner.py netbox.json cmd.txt
 ===============================================================================
 Netbox server IP/FQDN?: netbox.a-corp.com
-API token?: 2b19a1e2ecb262c70335a9b26172e21de0d9c932
 URL to GET?: /api/dcim/devices/?site=a-corp-hq&tag=router
 ===============================================================================
 Username: a.lambreca
@@ -435,6 +435,7 @@ Then the script will run main() function:
 - Show progress bar
 
 Errors:
+- If "NETBOX_TOKEN" not found in environment variable an error will be raised "NetboxAPITokenNotFound".
 - If there is an authentication error we will get an error message `19/08/2018 19:50:04 - Authentication error: ACORP-HQ-EU-GR-ATHENS-DC-R1.a-corp.com`
 - If there is a connectivity (TCP/22) error we will get an error message `19/08/2018 19:50:22 - TCP/22 connectivity error: ACORP-HQ-EU-GR-ATHENS-DC-R2.a-corp.com`
 - Errors are logged in runner.log
@@ -461,7 +462,6 @@ Finally the script will:
 aleks@acorp:~/netbox$ python3 runner.py netbox.json cmd.txt
 ===============================================================================
 Netbox server IP/FQDN?: netbox.a-corp.com
-API token?: 2b19a1e2ecb262c70335a9b26172e21de0d9c932
 What to GET?: /api/dcim/devices/?site=a-corp-hq&tag=router
 ===============================================================================
 Username: alambreca
