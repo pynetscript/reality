@@ -108,9 +108,12 @@ def get_netbox_devices():
     GET = ( get_input('What to GET?: '))
 
     NETBOX_TOKEN = os.environ.get('NETBOX_TOKEN')
+    
+    /etc/environment
+    
     if NETBOX_TOKEN is None:
-        NOT_FOUND = 'NETBOX_TOKEN was not found in environment variable.'
-        COMMAND = 'Add a token with the "export NETBOX_TOKEN=0123456789a0123456789b0123456789c0123456" command.'
+        NOT_FOUND = 'NETBOX_TOKEN was not found in environment variable "/etc/environment".'
+        COMMAND = 'Add token with NETBOX_TOKEN="0123456789a0123456789b0123456789c0123456" format.'
         print('\n'
               '{E1} {E2} \n'.format(E1=NOT_FOUND, E2=COMMAND))
         raise NetboxAPITokenNotFound()
