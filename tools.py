@@ -35,18 +35,15 @@ def get_input(prompt=''):
     histfile = os.path.join(os.path.expanduser("~"), ".runnerhistory")
 
     try:
-        #line = raw_input(prompt)
         readline.set_history_length(1000)
         readline.read_history_file(histfile)
         line = raw_input(prompt)
         readline.write_history_file(histfile)
     except NameError:
-        #line = input(prompt)
         readline.set_history_length(1000)
         readline.read_history_file(histfile)
         line = input(prompt)
         readline.write_history_file(histfile)
-        #line = input(prompt)
     except IOError:
         pass
     atexit.register(readline.write_history_file, histfile)
